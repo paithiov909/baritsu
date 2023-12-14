@@ -1,0 +1,7 @@
+^baritsu\.Rproj$
+^\.Rproj\.user$
+^\.devcontainer$
+^LICENSE\.md$
+^README\.Rmd$
+^cran-comments\.md$
+^renovate\.json$
