@@ -2,10 +2,18 @@
 % Please edit documentation in R/linear-reg.R
 \name{predict.baritsu_lr}
 \alias{predict.baritsu_lr}
-\title{Predict for linear_reg}
+\title{Linear regression prediction}
 \usage{
 \method{predict}{baritsu_lr}(object, newdata)
 }
+\arguments{
+\item{object}{An object of class \code{baritsu_lr}.}
+
+\item{newdata}{A data.frame.}
+}
+\value{
+A tibble that contains the predicted values.
+}
 \description{
-Predict for linear_reg
+Predicts with new data using a linear regression model.
 }

@@ -2,10 +2,20 @@
 % Please edit documentation in R/rand-forest.R
 \name{predict.baritsu_rf}
 \alias{predict.baritsu_rf}
-\title{Predict for rand_forest}
+\title{Random forest prediction}
 \usage{
 \method{predict}{baritsu_rf}(object, newdata, type = c("both", "class", "prob"))
 }
+\arguments{
+\item{object}{An object of class \code{baritsu_rf}.}
+
+\item{newdata}{A data.frame.}
+
+\item{type}{Type of prediction. One of "both", "class", or "prob".}
+}
+\value{
+A tibble that contains the predicted values and/or probabilities
+}
 \description{
-Predict for rand_forest
+Predicts with new data using a random forest model.
 }

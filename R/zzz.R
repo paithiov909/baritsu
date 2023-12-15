@@ -1,4 +1,4 @@
 .onLoad <- function(libname, pkgname) {
-  add_linear_reg_baritsu()
-  add_rand_forest_baritsu()
+  register_linear_reg_baritsu()
+  register_rand_forest_baritsu()
 }

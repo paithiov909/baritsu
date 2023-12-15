@@ -1,5 +1,4 @@
-#' @noRd
-add_rand_forest_baritsu <- function() {
+register_rand_forest_baritsu <- function() {
   parsnip::set_model_engine("rand_forest", "classification", "baritsu")
   parsnip::set_fit(
     model = "rand_forest",
@@ -37,8 +36,8 @@ add_rand_forest_baritsu <- function() {
       func = c(fun = "predict"),
       args =
         list(
-          object = rlang::expr(object$fit),
-          newdata = rlang::expr(new_data),
+          object = rlang::expr(object$fit), # nolint
+          newdata = rlang::expr(new_data), # nolint
           type = "class"
         )
     )
@@ -54,8 +53,8 @@ add_rand_forest_baritsu <- function() {
       func = c(fun = "predict"),
       args =
         list(
-          object = rlang::expr(object$fit),
-          newdata = rlang::expr(new_data),
+          object = rlang::expr(object$fit), # nolint
+          newdata = rlang::expr(new_data), # nolint
           type = "prob"
         )
     )

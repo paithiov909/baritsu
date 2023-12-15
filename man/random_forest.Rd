@@ -7,11 +7,11 @@
 random_forest(
   formula = NULL,
   data = NULL,
+  mtry = 0,
+  trees = 10,
+  min_n = 1,
   maximum_depth = 0,
   minimum_gain_split = 0,
-  min_n = 1,
-  trees = 10,
-  mtry = 0,
   seed = 0,
   x = NULL,
   y = NULL
@@ -24,15 +24,15 @@ If a recipe is passed, \code{data} is ignored.}
 
 \item{data}{A data.frame.}
 
-\item{maximum_depth}{Maximum depth of the tree.}
-
-\item{minimum_gain_split}{Minimum gain required to split an internal node.}
-
-\item{min_n}{Minimum number of data points in a leaf.}
+\item{mtry}{Subspace dimension.}
 
 \item{trees}{Number of trees.}
 
-\item{mtry}{Subspace dimension.}
+\item{min_n}{Minimum number of data points in a leaf.}
+
+\item{maximum_depth}{Maximum depth of the tree.}
+
+\item{minimum_gain_split}{Minimum gain required to split an internal node.}
 
 \item{seed}{Random seed.}
 

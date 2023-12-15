@@ -1,7 +1,7 @@
 Package: baritsu
 Title: Wrapper Around 'mlpack'
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre"))
 Description: A wrapper around the 'mlpack' package that enables to use
     formula interface for that functions.
@@ -11,12 +11,12 @@ Depends:
 Imports:
     hardhat,
     mlpack,
+    recipes,
     rlang,
     tibble
 Suggests:
     dplyr,
     modeldata,
-    recipes,
     rsample,
     testthat (>= 3.0.0),
     workflows

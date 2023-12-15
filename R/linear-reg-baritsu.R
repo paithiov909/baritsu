@@ -1,5 +1,4 @@
-#' @noRd
-add_linear_reg_baritsu <- function() {
+register_linear_reg_baritsu <- function() {
   parsnip::set_model_engine("linear_reg", "regression", "baritsu")
   parsnip::set_fit(
     model = "linear_reg",
@@ -46,8 +45,8 @@ add_linear_reg_baritsu <- function() {
       func = c(fun = "predict"),
       args =
         list(
-          object = rlang::expr(object$fit),
-          newdata = rlang::expr(new_data)
+          object = rlang::expr(object$fit), # nolint
+          newdata = rlang::expr(new_data) # nolint
         )
     )
   )
