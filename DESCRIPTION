@@ -1,13 +1,25 @@
 Package: baritsu
-Title: What the Package Does (One Line, Title Case)
+Title: Wrapper Around 'mlpack'
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre"))
+Description: A wrapper around the 'mlpack' package that enables to use
+    formula interface for that functions.
 License: MIT + file LICENSE
-Suggests: 
-    testthat (>= 3.0.0)
+Depends:
+    parsnip
+Imports:
+    hardhat,
+    mlpack,
+    rlang,
+    tibble
+Suggests:
+    dplyr,
+    modeldata,
+    recipes,
+    rsample,
+    testthat (>= 3.0.0),
+    workflows
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
