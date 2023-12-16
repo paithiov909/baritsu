@@ -68,6 +68,6 @@ predict.baritsu_blr <- function(object, newdata) {
     )
   tibble::tibble(
     .pred = as.double(pred[["predictions"]]),
-    stds = as.double(pred[["stds"]])
+    .stds = as.double(pred[["stds"]])
   )
 }

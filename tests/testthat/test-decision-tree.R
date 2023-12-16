@@ -10,40 +10,40 @@ rec <-
   recipes::step_impute_median(recipes::all_numeric_predictors()) |>
   recipes::step_impute_mode(recipes::all_nominal_predictors())
 
-test_that("random_forest fails when data contains NAs", {
+test_that("decition_trees fails when data contains NAs", {
   expect_error(
-    random_forest(
+    decision_trees(
       species ~ .,
       data = penguins
     )
   )
 })
 
-test_that("random_forest fails or warns when response is invalid", {
+test_that("decision_trees fails or warns when response is invalid", {
   testdat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = penguins_test)
   expect_error(
-    random_forest(
+    decision_trees(
       species ~ .,
       data = testdat |>
         dplyr::mutate(species = as.numeric(species))
     )
   )
   expect_warning(
-    random_forest(
+    decision_trees(
       species + sex ~ .,
       data = testdat
     )
   )
 })
 
-test_that("random_forest works for recipe", {
-  out <- random_forest(
+test_that("decision_trees works for recipe", {
+  out <- decision_trees(
     rec,
     data = NULL
   )
-  expect_s3_class(out, "baritsu_rf")
+  expect_s3_class(out, "baritsu_dt")
   testdat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = penguins_test)
@@ -52,32 +52,31 @@ test_that("random_forest works for recipe", {
   expect_equal(colnames(pred), c(".pred_class", ".probabilities"))
 })
 
-test_that("random_forest works for x-y interface", {
+test_that("decision_trees works for x-y interface", {
   dat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = NULL)
-  out <- random_forest(
+  out <- decision_trees(
     x = dat[, 3:6],
     y = dat[, "species"]
   )
-  expect_s3_class(out, "baritsu_rf")
+  expect_s3_class(out, "baritsu_dt")
 })
 
-test_that("random_forest works for formula interface", {
+test_that("decision_trees works for formula interface", {
   dat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = NULL)
-  out <- random_forest(
+  out <- decision_trees(
     species ~ .,
     data = dat
   )
-  expect_s3_class(out, "baritsu_rf")
+  expect_s3_class(out, "baritsu_dt")
 })
 
-test_that("rand_forest works with tidymodels", {
-  spec <- parsnip::rand_forest(
-    mtry = 3,
-    trees = 10,
+test_that("decision_trees works with tidymodels", {
+  spec <- parsnip::decision_tree(
+    tree_depth = 0,
     min_n = 5
   ) |>
     parsnip::set_engine("baritsu") |>

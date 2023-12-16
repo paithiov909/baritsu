@@ -13,18 +13,20 @@
 #' Alternatively, a recipe object can be passed for this argument.
 #' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
-#' @param mixture Regularization parameter within `[0, 1]`.
-#' mixture will be passed to lambda1 (for l1-norm penalty) as is,
+#' @param mixture Regularization parameter within `[0, 1]` (default: 1.0)
+#' This value will be passed to lambda1 (for l1-norm penalty) as is,
 #' and `1.0 - mixture` will be passed to lambda2 (for l2-norm penalty).
 #' @param no_intercept Logical; passed to [mlpack::lars()].
 #' @param no_normalize Logical; passed to [mlpack::lars()].
 #' @param use_cholesky Logical; passed to [mlpack::lars()].
+#' @param x Design matrix.
+#' @param y Response matrix.
 #' @returns An object of class \code{baritsu_lr}.
 #' @export
 linear_regression <- function(
   formula = NULL,
   data = NULL,
-  mixture = 0,
+  mixture = 1.0,
   no_intercept = FALSE,
   no_normalize = FALSE,
   use_cholesky = FALSE,
@@ -35,19 +37,18 @@ linear_regression <- function(
   # NA check is not necessary.
   if (any(mixture < 0, mixture > 1)) {
     rlang::warn("mixture should be a number between 0 and 1; set to 0.")
-    mixture <- 0
+    mixture <- 0.0
   }
-  # mixture=0 should be a ridge regression,
-  # so, when mixture=0, will be lambda1=0 and lambda2>0
-  lambda1 <- as.double(mixture) # for ridge
-  lambda2 <- as.double(1.0 - lambda1) # for lasso
+  # `mixture=1 corresponds to a pure lasso`
+  lambda1 <- as.double(mixture) # for lasso
+  lambda2 <- as.double(1.0 - lambda1) # for ridge
 
   if (lambda1 == 0.0) {
     lr_model <-
       mlpack::linear_regression(
         training = data$predictors,
         training_responses = data$outcomes,
-        lambda = lambda1
+        lambda = lambda2
       )
   } else {
     lr_model <-
@@ -100,6 +101,6 @@ predict.baritsu_lr <- function(object, newdata) {
     rlang::abort("stored model must be a 'LinearRegression' or a 'LARS'.")
   }
   tibble::tibble(
-    .pred = as.double(pred[["output_predictions"]]),
+    .pred = as.double(pred[["output_predictions"]])
   )
 }

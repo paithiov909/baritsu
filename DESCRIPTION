@@ -9,11 +9,13 @@ License: MIT + file LICENSE
 Depends:
     parsnip
 Imports:
+    generics,
     hardhat,
     mlpack,
     recipes,
     rlang,
-    tibble
+    tibble,
+    utils
 Suggests:
     dplyr,
     modeldata,

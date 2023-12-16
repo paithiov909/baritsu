@@ -1,33 +1,32 @@
-#' Random forests
+#' Decision trees
 #'
-#' A wrapper around [mlpack::random_forest()] that enables formula interface.
+#' A wrapper around [mlpack::decision_tree()] that enables formula interface.
 #'
-#' @seealso [mlpack::random_forest()]
+#' @details
+#' To prevent masking of [parsnip::decision_tree()],
+#' this function is named `decision_trees` (plural form!)
+#'
+#' @seealso [mlpack::decision_tree()]
 #'
 #' @param formula A formula.
 #' Alternatively, a recipe object can be passed for this argument.
 #' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
-#' @param mtry Subspace dimension.
-#' If 0, autoselects the square root of data dimensionality.
-#' @param trees Number of trees.
+#' @param tree_depth Maximum depth of the tree.
 #' @param min_n Minimum number of data points in a leaf.
-#' @param maximum_depth Maximum depth of the tree.
 #' @param minimum_gain_split Minimum gain required to split an internal node.
-#' @param seed Random seed. If 0, `std::time(NULL)` is used.
+#' @param weights Weights for each observation.
 #' @param x Design matrix.
 #' @param y Response matrix.
-#' @returns An object of class \code{baritsu_rf}.
+#' @returns An object of class \code{baritsu_dt}.
 #' @export
-random_forest <- function(
+decision_trees <- function(
   formula = NULL,
   data = NULL,
-  mtry = 0, # subspace_dim
-  trees = 10, # num_trees
-  min_n = 1, # minimum_leaf_size
-  maximum_depth = 0,
-  minimum_gain_split = 0,
-  seed = 0,
+  tree_depth = 0, # maximum_depth
+  min_n = 20, # minimum_leaf_size
+  minimum_gain_split = 1e-7,
+  weights = NULL,
   x = NULL,
   y = NULL
 ) {
@@ -35,47 +34,43 @@ random_forest <- function(
   stop_if_any_na(data$predictors)
   check_outcomes(data$outcomes)
 
-  rf_model <-
-    mlpack::random_forest(
+  if (is.null(weights)) {
+    weights <- tibble::tibble(
+      case_wts = rep(1, nrow(data$predictors))
+    )
+  }
+  dt_model <-
+    mlpack::decision_tree(
       training = data$predictors,
       labels = data$outcomes,
-      maximum_depth = maximum_depth,
-      minimum_gain_split = minimum_gain_split,
+      maximum_depth = tree_depth,
       minimum_leaf_size = min_n,
-      num_trees = trees,
-      subspace_dim = mtry,
-      seed = seed
+      minimum_gain_split = minimum_gain_split,
+      weights = weights
     )
-  rf_model <-
+  dt_model <-
     list(
-      fit = rf_model$output_model,
+      fit = dt_model$output_model,
       blueprint = data$blueprint
     )
-  class(rf_model) <- c("baritsu_rf", class(rf_model))
-  rf_model
+  class(dt_model) <- c("baritsu_dt", class(dt_model))
+  dt_model
 }
 
-#' @export
-refit.baritsu_rf <- function(object) {
-  object # TODO: deal with `warm_start`
-}
-
-#' Random forests prediction
+#' Decision trees prediction
 #'
-#' Predicts with new data using a random forest model.
-#'
-#' @param object An object of class \code{baritsu_rf}.
+#' @param object An object of class \code{baritsu_dt}.
 #' @param newdata A data.frame.
 #' @param type Type of prediction. One of "both", "class", or "prob".
 #' @returns A tibble that contains the predicted values and/or probabilities.
 #' @export
-predict.baritsu_rf <- function(
+predict.baritsu_dt <- function(
   object, newdata,
   type = c("both", "class", "prob")
 ) {
   type <- rlang::arg_match(type, c("both", "class", "prob"))
-  if (!check_exptr_type(object, "RandomForestModel")) {
-    rlang::abort("stored model must be a 'RandomForestModel'.")
+  if (!check_exptr_type(object, "DecisionTreeModel")) {
+    rlang::abort("stored model must be a 'DecisionTreeModel'.")
   }
   newdata <-
     hardhat::forge(
@@ -84,7 +79,7 @@ predict.baritsu_rf <- function(
     )
   stop_if_any_na(newdata$predictors)
   pred <-
-    mlpack::random_forest(
+    mlpack::decision_tree(
       input_model = object$fit,
       test = newdata$predictors
     )

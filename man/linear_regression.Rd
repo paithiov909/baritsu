@@ -7,7 +7,7 @@
 linear_regression(
   formula = NULL,
   data = NULL,
-  mixture = 0,
+  mixture = 1,
   no_intercept = FALSE,
   no_normalize = FALSE,
   use_cholesky = FALSE,
@@ -22,8 +22,8 @@ If a recipe is passed, \code{data} is ignored.}
 
 \item{data}{A data.frame.}
 
-\item{mixture}{Regularization parameter within \verb{[0, 1]}.
-mixture will be passed to lambda1 (for l1-norm penalty) as is,
+\item{mixture}{Regularization parameter within \verb{[0, 1]} (default: 1.0)
+This value will be passed to lambda1 (for l1-norm penalty) as is,
 and \code{1.0 - mixture} will be passed to lambda2 (for l2-norm penalty).}
 
 \item{no_intercept}{Logical; passed to \code{\link[mlpack:lars]{mlpack::lars()}}.}
@@ -31,6 +31,10 @@ and \code{1.0 - mixture} will be passed to lambda2 (for l2-norm penalty).}
 \item{no_normalize}{Logical; passed to \code{\link[mlpack:lars]{mlpack::lars()}}.}
 
 \item{use_cholesky}{Logical; passed to \code{\link[mlpack:lars]{mlpack::lars()}}.}
+
+\item{x}{Design matrix.}
+
+\item{y}{Response matrix.}
 }
 \value{
 An object of class \code{baritsu_lr}.

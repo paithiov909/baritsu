@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+pkgload::load_all()
 ```
 
 # baritsu
@@ -20,7 +21,8 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/baritsu)](https://CRAN.R-project.org/package=baritsu)
 <!-- badges: end -->
 
-The goal of baritsu is to ...
+The main goal of baritsu is to implement wrappers around [mlpack](https://www.mlpack.org/doc/stable/r_documentation.html) that allows formula as their argument.
+Also, baritsu provides parsnip engines of those wrappers, so they can be used with tidymodels workflows.
 
 ## Installation
 
@@ -36,22 +38,41 @@ devtools::install_github("paithiov909/baritsu")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(baritsu)
-## basic example code
+require(tidymodels)
+
+penguins <- modeldata::penguins
+
+data_split <- initial_split(penguins, strata = "species")
+penguins_train <- training(data_split)
+penguins_test <- testing(data_split)
+
+rec <-
+  recipe(
+    species ~ .,
+    data = penguins_train
+  ) |>
+  step_impute_median(all_numeric_predictors()) |>
+  step_impute_mode(all_nominal_predictors())
+
+spec <-
+  decision_tree(
+    tree_depth = 0,
+    min_n = 5
+  ) |>
+    set_engine("baritsu") |>
+    set_mode("classification")
+
+translate(spec)
+
+wf_fit <- workflow() |>
+  add_recipe(rec) |>
+  add_model(spec) |>
+  fit(penguins_train)
+
+pred <- augment(wf_fit, penguins_test) |>
+  dplyr::select(species, .pred_class)
+
+pred
+
+f_meas(pred, truth = species, estimate = .pred_class)
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```r
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

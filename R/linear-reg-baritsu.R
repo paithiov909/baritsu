@@ -1,3 +1,29 @@
+#' Linear regression via baritsu
+#'
+#' [mlpack::lars()] is an implementation of Least Angle Regression
+#' (Stagewise/laSso), also known as LARS.
+#'
+#' @details
+#' For this engine, there is a single mode: regression
+#'
+#' ## Tuning Parameters
+#'
+#' This model has 1 tuning parameters:
+#'
+#' - `mixture` Proportion of Lasso Penalty (type: double, default: 1.0)
+#'
+#' A value of `mixture = 1` corresponds to a pure lasso model,
+#' while `mixture = 0` indicates ridge regression.
+#'
+#' ## Preprocessing requirements
+#'
+#' Factor/categorical predictors need to be converted to numeric values
+#' (e.g., dummy or indicator variables) for this engine.
+#' When using the formula method via \code{\link[=fit.model_spec]{fit()}},
+#' parsnip will convert factor columns to indicators.
+#'
+#' @name details_linear_reg_baritsu
+#' @keywords internal
 register_linear_reg_baritsu <- function() {
   parsnip::set_model_engine("linear_reg", "regression", "baritsu")
   parsnip::set_fit(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/rand-forest.R
 \name{random_forest}
 \alias{random_forest}
-\title{Random forest}
+\title{Random forests}
 \usage{
 random_forest(
   formula = NULL,
@@ -24,7 +24,8 @@ If a recipe is passed, \code{data} is ignored.}
 
 \item{data}{A data.frame.}
 
-\item{mtry}{Subspace dimension.}
+\item{mtry}{Subspace dimension.
+If 0, autoselects the square root of data dimensionality.}
 
 \item{trees}{Number of trees.}
 
@@ -34,7 +35,7 @@ If a recipe is passed, \code{data} is ignored.}
 
 \item{minimum_gain_split}{Minimum gain required to split an internal node.}
 
-\item{seed}{Random seed.}
+\item{seed}{Random seed. If 0, \code{std::time(NULL)} is used.}
 
 \item{x}{Design matrix.}
 
