@@ -1,3 +1,5 @@
+#' @import parsnip
+#' @importFrom utils globalVariables
 #' @importFrom generics refit
 #' @keywords internal
 "_PACKAGE"
@@ -51,9 +53,7 @@ check_exptr_type <- function(object, type) {
   )
 }
 
-mold <- function(
-  formula, data, x, y
-) {
+mold <- function(formula, data, x, y) {
   if (!is.null(formula)) {
     if (inherits(formula, "recipe")) {
       data <- formula |>

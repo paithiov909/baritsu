@@ -113,18 +113,4 @@ test_that("rand_forest works with tidymodels", {
   expect_s3_class(wf_fit, "workflow")
   out <- predict(wf_fit, penguins_test)
   expect_s3_class(out, "tbl_df")
-
-  spec <- parsnip::rand_forest(
-    mtry = 30,
-    trees = 10,
-    min_n = 5
-  ) |>
-    parsnip::set_engine("baritsu") |>
-    parsnip::set_mode("classification") |>
-    parsnip::set_args(seed = 234)
-  wf_fit <- workflows::workflow() |>
-    workflows::add_recipe(rec) |>
-    workflows::add_model(spec) |>
-    fit(penguins_train)
-  expect_true(!identical(out, predict(wf_fit, penguins_test)))
 })

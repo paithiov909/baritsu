@@ -1,6 +1,7 @@
 ^baritsu\.Rproj$
 ^\.Rproj\.user$
 ^\.devcontainer$
+^\.vscode$
 ^LICENSE\.md$
 ^README\.Rmd$
 ^cran-comments\.md$
