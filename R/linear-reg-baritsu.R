@@ -15,13 +15,6 @@
 #' A value of `mixture = 1` corresponds to a pure lasso model,
 #' while `mixture = 0` indicates ridge regression.
 #'
-#' ## Preprocessing requirements
-#'
-#' Factor/categorical predictors need to be converted to numeric values
-#' (e.g., dummy or indicator variables) for this engine.
-#' When using the formula method via \code{\link[=fit.model_spec]{fit()}},
-#' parsnip will convert factor columns to indicators.
-#'
 #' @name details_linear_reg_baritsu
 #' @keywords internal
 register_linear_reg_baritsu <- function() {

@@ -23,13 +23,5 @@ This model has 1 tuning parameters:
 A value of \code{mixture = 1} corresponds to a pure lasso model,
 while \code{mixture = 0} indicates ridge regression.
 }
-
-\subsection{Preprocessing requirements}{
-
-Factor/categorical predictors need to be converted to numeric values
-(e.g., dummy or indicator variables) for this engine.
-When using the formula method via \code{\link[=fit.model_spec]{fit()}},
-parsnip will convert factor columns to indicators.
-}
 }
 \keyword{internal}

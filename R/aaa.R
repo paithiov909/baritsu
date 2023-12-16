@@ -68,8 +68,6 @@ mold <- function(
     hardhat::mold(
       x, y
     )
-  } else {
-    missing_arg()
   }
 }
 

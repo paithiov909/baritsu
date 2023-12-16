@@ -15,13 +15,6 @@
 #' - `trees`: Trees (type: integer)
 #' - `min_n`: Minimal Node Size (type: integer)
 #'
-#' ## Preprocessing requirements
-#'
-#' Factor/categorical predictors need to be converted to numeric values
-#' (e.g., dummy or indicator variables) for this engine.
-#' When using the formula method via \code{\link[=fit.model_spec]{fit()}},
-#' parsnip will convert factor columns to indicators.
-#'
 #' @name details_rand_forest_baritsu
 #' @keywords internal
 register_rand_forest_baritsu <- function() {

@@ -23,13 +23,5 @@ This model has 3 tuning parameters:
 \item \code{min_n}: Minimal Node Size (type: integer)
 }
 }
-
-\subsection{Preprocessing requirements}{
-
-Factor/categorical predictors need to be converted to numeric values
-(e.g., dummy or indicator variables) for this engine.
-When using the formula method via \code{\link[=fit.model_spec]{fit()}},
-parsnip will convert factor columns to indicators.
-}
 }
 \keyword{internal}

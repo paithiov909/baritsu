@@ -49,7 +49,7 @@ require(tidymodels)
 #> ✖ dplyr::lag()     masks stats::lag()
 #> ✖ tidyr::matches() masks rsample::matches(), dplyr::matches(), testthat::matches()
 #> ✖ recipes::step()  masks stats::step()
-#> • Search for functions across packages at https://www.tidymodels.org/find/
+#> • Use suppressPackageStartupMessages() to eliminate package startup messages
 
 penguins <- modeldata::penguins
 
@@ -70,8 +70,8 @@ spec <-
     tree_depth = 0,
     min_n = 5
   ) |>
-    set_engine("baritsu") |>
-    set_mode("classification")
+  set_engine("baritsu") |>
+  set_mode("classification")
 
 translate(spec)
 #> Decision Tree Model Specification (classification)
@@ -115,5 +115,5 @@ f_meas(pred, truth = species, estimate = .pred_class)
 #> # A tibble: 1 × 3
 #>   .metric .estimator .estimate
 #>   <chr>   <chr>          <dbl>
-#> 1 f_meas  macro          0.943
+#> 1 f_meas  macro          0.957
 ```
