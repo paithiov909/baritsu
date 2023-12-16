@@ -109,8 +109,18 @@ test_that("decision_trees works with tidymodels", {
     workflows::add_model(spec) |>
     fit(penguins_train)
   expect_s3_class(wf_fit, "workflow")
-  expect_s3_class(
-    predict(wf_fit, penguins_test),
-    "tbl_df"
-  )
+  out <- predict(wf_fit, penguins_test)
+  expect_s3_class(out, "tbl_df")
+
+  spec <- parsnip::decision_tree(
+    tree_depth = 0,
+    min_n = 50
+  ) |>
+    parsnip::set_engine("baritsu") |>
+    parsnip::set_mode("classification")
+  wf_fit <- workflows::workflow() |>
+    workflows::add_recipe(rec) |>
+    workflows::add_model(spec) |>
+    fit(penguins_train)
+  expect_true(!identical(out, predict(wf_fit, penguins_test)))
 })
