@@ -13,11 +13,6 @@
 #'
 #' - `penalty`: Amount of Regularization (type: double)
 #'
-#' Other engine arguments of interest:
-#'
-#' - `stop_iter()`: A non-negative integer
-#' for how many iterations with no improvement before stopping
-#'
 #' @name details_multinom_reg_baritsu
 #' @keywords internal
 register_multinom_reg_baritsu <- function() {
@@ -30,9 +25,7 @@ register_multinom_reg_baritsu <- function() {
       interface = "formula",
       protect = c("formula", "data", "x", "y"),
       func = c(pkg = "baritsu", fun = "softmax_regression"),
-      defaults = list(
-        no_intercept = FALSE
-      )
+      defaults = list()
     )
   )
   parsnip::set_model_arg(
@@ -41,14 +34,6 @@ register_multinom_reg_baritsu <- function() {
     parsnip = "penalty",
     original = "penalty",
     func = list(pkg = "dials", fun = "penalty"),
-    has_submodel = FALSE
-  )
-  parsnip::set_model_arg(
-    model = "multinom_reg",
-    eng = "baritsu",
-    parsnip = "stop_iter",
-    original = "stop_iter",
-    func = list(pkg = "dials", fun = "stop_iter"),
     has_submodel = FALSE
   )
   parsnip::set_encoding(

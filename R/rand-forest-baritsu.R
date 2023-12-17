@@ -24,22 +24,43 @@ register_rand_forest_baritsu <- function() {
     eng = "baritsu",
     mode = "classification",
     value = list(
-      interface = "formula",
+      interface = "data.frame",
+      data = c(x = "x", y = "y"),
       protect = c("formula", "data", "x", "y"),
       func = c(pkg = "baritsu", fun = "random_forest"),
-      defaults = list(
-        maximum_depth = 0,
-        minimum_gain_split = 0,
-        seed = 0
-      )
+      defaults = list(seed = rlang::expr(sample.int(10 ^ 5, 1)))
     )
+  )
+  parsnip::set_model_arg(
+    model = "rand_forest",
+    eng = "baritsu",
+    parsnip = "mtry",
+    original = "mtry",
+    func = list(pkg = "dials", fun = "mtry"),
+    has_submodel = FALSE
+  )
+  parsnip::set_model_arg(
+    model = "rand_forest",
+    eng = "baritsu",
+    parsnip = "trees",
+    original = "trees",
+    func = list(pkg = "dials", fun = "trees"),
+    has_submodel = FALSE
+  )
+  parsnip::set_model_arg(
+    model = "rand_forest",
+    eng = "baritsu",
+    parsnip = "min_n",
+    original = "min_n",
+    func = list(pkg = "dials", fun = "min_n"),
+    has_submodel = FALSE
   )
   parsnip::set_encoding(
     model = "rand_forest",
     eng = "baritsu",
     mode = "classification",
     options = list(
-      predictor_indicators = "traditional",
+      predictor_indicators = "none",
       compute_intercept = FALSE,
       remove_intercept = FALSE,
       allow_sparse_x = FALSE

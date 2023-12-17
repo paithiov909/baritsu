@@ -76,7 +76,7 @@ test_that("random_forest works for formula interface", {
 
 test_that("rand_forest works with tidymodels", {
   spec <- parsnip::rand_forest(
-    mtry = 30,
+    mtry = 3,
     trees = 10,
     min_n = 5
   ) |>

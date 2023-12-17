@@ -20,12 +20,6 @@ This model has 1 tuning parameters:
 \itemize{
 \item \code{penalty}: Amount of Regularization (type: double)
 }
-
-Other engine arguments of interest:
-\itemize{
-\item \code{stop_iter()}: A non-negative integer
-for how many iterations with no improvement before stopping
-}
 }
 }
 \keyword{internal}

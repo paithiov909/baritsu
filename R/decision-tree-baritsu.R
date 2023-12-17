@@ -26,9 +26,7 @@ register_decision_tree_baritsu <- function() {
       interface = "formula",
       protect = c("formula", "data", "x", "y"), # FIXME: support case weights
       func = c(pkg = "baritsu", fun = "decision_trees"),
-      defaults = list(
-        minimum_gain_split = 1e-7
-      )
+      defaults = list()
     )
   )
   parsnip::set_model_arg(
