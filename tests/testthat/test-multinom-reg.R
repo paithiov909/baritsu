@@ -8,7 +8,8 @@ rec <-
     data = penguins_train
   ) |>
   recipes::step_impute_median(recipes::all_numeric_predictors()) |>
-  recipes::step_impute_mode(recipes::all_nominal_predictors())
+  recipes::step_impute_mode(recipes::all_nominal_predictors()) |>
+  recipes::step_scale(recipes::all_numeric_predictors())
 
 test_that("softmax_regression fails when data contains NAs", {
   expect_error(

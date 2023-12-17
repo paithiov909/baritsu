@@ -18,7 +18,6 @@ pkgload::load_all()
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/baritsu)](https://CRAN.R-project.org/package=baritsu)
 <!-- badges: end -->
 
 The main goal of baritsu is to implement wrappers around [mlpack](https://www.mlpack.org/doc/stable/r_documentation.html) that allows formula as their argument.
@@ -38,11 +37,15 @@ devtools::install_github("paithiov909/baritsu")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-require(tidymodels)
+suppressPackageStartupMessages({
+  require(tidymodels)
+  require(baritsu)
+})
 
-penguins <- modeldata::penguins
+data("penguins", package = "modeldata")
 
-data_split <- initial_split(penguins, strata = "species")
+set.seed(1218)
+data_split <- initial_split(penguins, strata = species)
 penguins_train <- training(data_split)
 penguins_test <- testing(data_split)
 

@@ -1,7 +1,7 @@
 #' Softmax regression
 #'
-#' A wrapper around [mlpack::softmax_regression()] that
-#' allows passing a formula.
+#' A wrapper around [mlpack::softmax_regression()]
+#' that allows passing a formula.
 #'
 #' @seealso [mlpack::softmax_regression()]
 #'
@@ -41,7 +41,8 @@ softmax_regression <- function(
       labels = data$outcomes,
       lambda = penalty,
       max_iterations = stop_iter,
-      no_intercept = no_intercept
+      no_intercept = no_intercept,
+      number_of_classes = nlevels(data$outcomes[[1]])
     )
   sr_model <-
     list(

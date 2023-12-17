@@ -34,7 +34,7 @@ all_factors <- function(data) {
   all(unlist(lapply(data, is.factor)))
 }
 
-#' Stop if outcome is not a factor
+#' Stop if outcome are not factors
 #' @noRd
 check_outcomes <- function(outcomes) {
   if (ncol(outcomes) > 1) {
@@ -54,9 +54,6 @@ check_outcomes <- function(outcomes) {
 #' to mlpack call.
 #' @noRd
 is_exptr_of <- function(object, type) {
-  if (is.null(object$fit)) {
-    return(FALSE)
-  }
   model_type <- attr(object$fit, "type")
   ifelse(
     model_type == type,

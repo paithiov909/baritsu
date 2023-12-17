@@ -9,7 +9,7 @@ rec <-
     Sale_Price ~ .,
     data = ames_train
   ) |>
-  recipes::step_center(recipes::all_numeric_predictors())
+  recipes::step_scale(recipes::all_numeric_predictors())
 
 test_that("linear_reg warns when mixture is not in [0, 1]", {
   expect_warning(

@@ -35,8 +35,8 @@ If a recipe is passed, \code{data} is ignored.}
 An object of class \code{baritsu_sr}.
 }
 \description{
-A wrapper around \code{\link[mlpack:softmax_regression]{mlpack::softmax_regression()}} that
-allows passing a formula.
+A wrapper around \code{\link[mlpack:softmax_regression]{mlpack::softmax_regression()}}
+that allows passing a formula.
 }
 \seealso{
 \code{\link[mlpack:softmax_regression]{mlpack::softmax_regression()}}
