@@ -85,7 +85,7 @@ pred_to_tbl <- function(pred, labs, type) {
     tibble::tibble(
       .pred_class = factor(
         pred$predictions[, 1],
-        levels = labs,
+        levels = seq_along(labs),
         labels = labs
       ),
       .probabilities = tibble::as_tibble(
