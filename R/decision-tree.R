@@ -1,6 +1,6 @@
 #' Decision trees
 #'
-#' A wrapper around [mlpack::decision_tree()] that enables formula interface.
+#' A wrapper around [mlpack::decision_tree()] that allows passing a formula.
 #'
 #' @details
 #' To prevent masking of [parsnip::decision_tree()],
@@ -31,7 +31,7 @@ decision_trees <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  stop_if_any_na(data$predictors)
+  check_predictors(data$predictors)
   check_outcomes(data$outcomes)
 
   if (is.null(weights)) {
@@ -59,6 +59,8 @@ decision_trees <- function(
 
 #' Decision trees prediction
 #'
+#' Predicts with new data using a decision tree model.
+#'
 #' @param object An object of class \code{baritsu_dt}.
 #' @param newdata A data.frame.
 #' @param type Type of prediction. One of "both", "class", or "prob".
@@ -69,7 +71,7 @@ predict.baritsu_dt <- function(
   type = c("both", "class", "prob")
 ) {
   type <- rlang::arg_match(type, c("both", "class", "prob"))
-  if (!check_exptr_type(object, "DecisionTreeModel")) {
+  if (!is_exptr_of(object, "DecisionTreeModel")) {
     rlang::abort("stored model must be a 'DecisionTreeModel'.")
   }
   newdata <-
@@ -77,7 +79,7 @@ predict.baritsu_dt <- function(
       newdata,
       blueprint = object$blueprint
     )
-  stop_if_any_na(newdata$predictors)
+  check_predictors(newdata$predictors)
   pred <-
     mlpack::decision_tree(
       input_model = object$fit,

@@ -41,7 +41,7 @@ An object of class \code{baritsu_lr}.
 }
 \description{
 A wrapper around \code{\link[mlpack:linear_regression]{mlpack::linear_regression()}} and \code{\link[mlpack:lars]{mlpack::lars()}}
-that enables formula interface.
+that allows passing a formula.
 }
 \details{
 When the mixture is 0, this function

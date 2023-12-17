@@ -1,54 +1,58 @@
-#' Decision trees via baritsu
+#' Multinomial regression via baritsu
 #'
-#' [mlpack::decision_tree()] is an implementation of
-#' an ID3-style decision tree for classification,
-#' which supports categorical data.
+#' [mlpack::softmax_regression()] is an implementation of
+#' a softmax regression, a generalization of logistic regression
+#' to the multiclass case, which has support for L2 regularization.
 #'
 #' @details
 #' For this engine, there is a single mode: classification
 #'
 #' ## Tuning Parameters
 #'
-#' This model has 2 tuning parameters:
+#' This model has 1 tuning parameters:
 #'
-#' - `tree_depth`: Tree depth (type: integer)
-#' - `min_n`: Minimal Node Size (type: integer)
+#' - `penalty`: Amount of Regularization (type: double)
 #'
-#' @name details_decision_tree_baritsu
+#' Other engine arguments of interest:
+#'
+#' - `stop_iter()`: A non-negative integer
+#' for how many iterations with no improvement before stopping
+#'
+#' @name details_multinom_reg_baritsu
 #' @keywords internal
-register_decision_tree_baritsu <- function() {
-  parsnip::set_model_engine("decision_tree", "classification", "baritsu")
+register_multinom_reg_baritsu <- function() {
+  parsnip::set_model_engine("multinom_reg", "classification", "baritsu")
   parsnip::set_fit(
-    model = "decision_tree",
+    model = "multinom_reg",
     eng = "baritsu",
     mode = "classification",
     value = list(
       interface = "formula",
-      protect = c("formula", "data", "x", "y"), # FIXME: support case weights
-      func = c(pkg = "baritsu", fun = "decision_trees"),
+      protect = c("formula", "data", "x", "y"),
+      func = c(pkg = "baritsu", fun = "softmax_regression"),
       defaults = list(
-        minimum_gain_split = 1e-7
+        no_intercept = FALSE
       )
     )
   )
   parsnip::set_model_arg(
-    model = "decision_tree",
+    model = "multinom_reg",
     eng = "baritsu",
-    parsnip = "tree_depth",
-    original = "tree_depth",
-    func = list(pkg = "dials", fun = "tree_depth"),
+    parsnip = "penalty",
+    original = "penalty",
+    func = list(pkg = "dials", fun = "penalty"),
     has_submodel = FALSE
   )
   parsnip::set_model_arg(
-    model = "decision_tree",
+    model = "multinom_reg",
     eng = "baritsu",
-    parsnip = "min_n",
-    original = "min_n",
-    func = list(pkg = "dials", fun = "min_n"),
+    parsnip = "stop_iter",
+    original = "stop_iter",
+    func = list(pkg = "dials", fun = "stop_iter"),
     has_submodel = FALSE
   )
   parsnip::set_encoding(
-    model = "decision_tree",
+    model = "multinom_reg",
     eng = "baritsu",
     mode = "classification",
     options = list(
@@ -59,7 +63,7 @@ register_decision_tree_baritsu <- function() {
     )
   )
   parsnip::set_pred(
-    model = "decision_tree",
+    model = "multinom_reg",
     eng = "baritsu",
     mode = "classification",
     type = "class",
@@ -76,7 +80,7 @@ register_decision_tree_baritsu <- function() {
     )
   )
   parsnip::set_pred(
-    model = "decision_tree",
+    model = "multinom_reg",
     eng = "baritsu",
     mode = "classification",
     type = "prob",
@@ -92,5 +96,4 @@ register_decision_tree_baritsu <- function() {
         )
     )
   )
-  parsnip::set_dependency("decision_tree", eng = "baritsu", pkg = "baritsu")
 }

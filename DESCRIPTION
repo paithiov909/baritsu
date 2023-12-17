@@ -1,10 +1,10 @@
 Package: baritsu
-Title: Wrapper Around 'mlpack'
+Title: Wrappers Around 'mlpack'
 Version: 0.0.0.9000
 Authors@R:
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre"))
-Description: A wrapper around the 'mlpack' package that enables to use
-    formula interface for that functions.
+Description: A collection of wrappers around the 'mlpack' package that allows
+    passing formula as their argument.
 License: MIT + file LICENSE
 Depends:
     parsnip

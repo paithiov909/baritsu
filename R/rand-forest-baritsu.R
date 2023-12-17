@@ -29,7 +29,8 @@ register_rand_forest_baritsu <- function() {
       func = c(pkg = "baritsu", fun = "random_forest"),
       defaults = list(
         maximum_depth = 0,
-        minimum_gain_split = 0
+        minimum_gain_split = 0,
+        seed = 0
       )
     )
   )

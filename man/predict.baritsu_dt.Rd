@@ -17,5 +17,5 @@
 A tibble that contains the predicted values and/or probabilities.
 }
 \description{
-Decision trees prediction
+Predicts with new data using a decision tree model.
 }

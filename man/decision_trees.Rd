@@ -38,7 +38,7 @@ If a recipe is passed, \code{data} is ignored.}
 An object of class \code{baritsu_dt}.
 }
 \description{
-A wrapper around \code{\link[mlpack:decision_tree]{mlpack::decision_tree()}} that enables formula interface.
+A wrapper around \code{\link[mlpack:decision_tree]{mlpack::decision_tree()}} that allows passing a formula.
 }
 \details{
 To prevent masking of \code{\link[parsnip:decision_tree]{parsnip::decision_tree()}},

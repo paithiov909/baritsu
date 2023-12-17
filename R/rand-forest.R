@@ -1,6 +1,6 @@
 #' Random forests
 #'
-#' A wrapper around [mlpack::random_forest()] that enables formula interface.
+#' A wrapper around [mlpack::random_forest()] that allows passing a formula.
 #'
 #' @seealso [mlpack::random_forest()]
 #'
@@ -14,7 +14,7 @@
 #' @param min_n Minimum number of data points in a leaf.
 #' @param maximum_depth Maximum depth of the tree.
 #' @param minimum_gain_split Minimum gain required to split an internal node.
-#' @param seed Random seed. If 0, `std::time(NULL)` is used.
+#' @param seed Random seed. If 0, `std::time(NULL)` is used internally.
 #' @param x Design matrix.
 #' @param y Response matrix.
 #' @returns An object of class \code{baritsu_rf}.
@@ -32,7 +32,7 @@ random_forest <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  stop_if_any_na(data$predictors)
+  check_predictors(data$predictors)
   check_outcomes(data$outcomes)
 
   rf_model <-
@@ -56,7 +56,7 @@ random_forest <- function(
 }
 
 #' @export
-refit.baritsu_rf <- function(object) {
+refit.baritsu_rf <- function(object, ...) {
   object # TODO: deal with `warm_start`
 }
 
@@ -74,7 +74,7 @@ predict.baritsu_rf <- function(
   type = c("both", "class", "prob")
 ) {
   type <- rlang::arg_match(type, c("both", "class", "prob"))
-  if (!check_exptr_type(object, "RandomForestModel")) {
+  if (!is_exptr_of(object, "RandomForestModel")) {
     rlang::abort("stored model must be a 'RandomForestModel'.")
   }
   newdata <-
@@ -82,7 +82,7 @@ predict.baritsu_rf <- function(
       newdata,
       blueprint = object$blueprint
     )
-  stop_if_any_na(newdata$predictors)
+  check_predictors(newdata$predictors)
   pred <-
     mlpack::random_forest(
       input_model = object$fit,

@@ -1,7 +1,7 @@
 #' Bayesian linear regression
 #'
-#' A wrapper around [mlpack::bayesian_linear_regression()] that enables
-#' formula interface.
+#' A wrapper around [mlpack::bayesian_linear_regression()] that allows
+#' passing a formula.
 #'
 #' @seealso [mlpack::bayesian_linear_regression()]
 #'
@@ -53,7 +53,7 @@ linear_regression_bayesian <- function(
 #' and the standard deviations of the predictive distribution.
 #' @export
 predict.baritsu_blr <- function(object, newdata) {
-  if (!check_exptr_type(object, "BayesianLinearRegression")) {
+  if (!is_exptr_of(object, "BayesianLinearRegression")) {
     rlang::abort("stored model must be a 'BayesianLinearRegression'.")
   }
   newdata <-

@@ -35,7 +35,7 @@ If 0, autoselects the square root of data dimensionality.}
 
 \item{minimum_gain_split}{Minimum gain required to split an internal node.}
 
-\item{seed}{Random seed. If 0, \code{std::time(NULL)} is used.}
+\item{seed}{Random seed. If 0, \code{std::time(NULL)} is used internally.}
 
 \item{x}{Design matrix.}
 
@@ -45,7 +45,7 @@ If 0, autoselects the square root of data dimensionality.}
 An object of class \code{baritsu_rf}.
 }
 \description{
-A wrapper around \code{\link[mlpack:random_forest]{mlpack::random_forest()}} that enables formula interface.
+A wrapper around \code{\link[mlpack:random_forest]{mlpack::random_forest()}} that allows passing a formula.
 }
 \seealso{
 \code{\link[mlpack:random_forest]{mlpack::random_forest()}}

@@ -34,8 +34,8 @@ if enabled, scales each feature by their standard deviations.}
 An object of class \code{baritsu_blr}.
 }
 \description{
-A wrapper around \code{\link[mlpack:bayesian_linear_regression]{mlpack::bayesian_linear_regression()}} that enables
-formula interface.
+A wrapper around \code{\link[mlpack:bayesian_linear_regression]{mlpack::bayesian_linear_regression()}} that allows
+passing a formula.
 }
 \seealso{
 \code{\link[mlpack:bayesian_linear_regression]{mlpack::bayesian_linear_regression()}}

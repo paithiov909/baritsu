@@ -1,7 +1,7 @@
 #' Linear regression
 #'
 #' A wrapper around [mlpack::linear_regression()] and [mlpack::lars()]
-#' that enables formula interface.
+#' that allows passing a formula.
 #'
 #' @details
 #' When the mixture is 0, this function
@@ -85,13 +85,13 @@ predict.baritsu_lr <- function(object, newdata) {
       newdata,
       blueprint = object$blueprint
     )
-  if (check_exptr_type(object, "LinearRegression")) {
+  if (is_exptr_of(object, "LinearRegression")) {
     pred <-
       mlpack::linear_regression(
         input_model = object$fit,
         test = newdata$predictors
       )
-  } else if (check_exptr_type(object, "LARS")) {
+  } else if (is_exptr_of(object, "LARS")) {
     pred <-
       mlpack::lars(
         input_model = object$fit,
