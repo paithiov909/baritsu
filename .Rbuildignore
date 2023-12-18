@@ -8,5 +8,6 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^cran-comments\.md$
+^codecov\.yml$
 ^renovate\.json$
 ^_pkgdown\.yml$
