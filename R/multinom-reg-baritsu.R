@@ -9,9 +9,15 @@
 #'
 #' ## Tuning Parameters
 #'
-#' This model has 1 tuning parameters:
+#' This model has 1 tuning parameter:
 #'
 #' - `penalty`: Amount of Regularization (type: double)
+#'
+#' ## Preprocessing requirements
+#'
+#' Predictors should have the same scale.
+#' One way to achieve this is to center and scale each
+#' so that each predictor has mean zero and a variance of one.
 #'
 #' @name details_multinom_reg_baritsu
 #' @keywords internal

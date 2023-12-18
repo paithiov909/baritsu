@@ -15,7 +15,7 @@ register_linear_reg_baritsu()
 For this engine, there is a single mode: regression
 \subsection{Tuning Parameters}{
 
-This model has 1 tuning parameters:
+This model has 1 tuning parameter:
 \itemize{
 \item \code{mixture} Proportion of Lasso Penalty (type: double, default: 1.0)
 }

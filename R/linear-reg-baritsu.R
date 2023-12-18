@@ -8,7 +8,7 @@
 #'
 #' ## Tuning Parameters
 #'
-#' This model has 1 tuning parameters:
+#' This model has 1 tuning parameter:
 #'
 #' - `mixture` Proportion of Lasso Penalty (type: double, default: 1.0)
 #'
