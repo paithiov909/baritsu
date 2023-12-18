@@ -39,7 +39,7 @@ linear_regression <- function(
     rlang::warn("mixture should be a number between 0 and 1; set to 0.")
     mixture <- 0.0
   }
-  # `mixture=1 corresponds to a pure lasso`
+  # `mixture=1` corresponds to a pure lasso
   lambda1 <- as.double(mixture) # for lasso
   lambda2 <- as.double(1.0 - lambda1) # for ridge
 

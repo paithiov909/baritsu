@@ -75,6 +75,7 @@ predict.baritsu_sr <- function(
       newdata,
       blueprint = object$blueprint
     )
+  check_predictors(newdata$predictors)
   pred <-
     mlpack::softmax_regression(
       input_model = object$fit,
