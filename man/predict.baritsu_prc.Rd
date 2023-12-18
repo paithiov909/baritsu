@@ -4,14 +4,14 @@
 \alias{predict.baritsu_prc}
 \title{Perceptron prediction}
 \usage{
-\method{predict}{baritsu_prc}(object, newdata, type = "class")
+\method{predict}{baritsu_prc}(object, newdata, ...)
 }
 \arguments{
 \item{object}{An object of class \code{baritsu_prc}.}
 
 \item{newdata}{A data.frame.}
 
-\item{type}{Type of prediction (this model only returns predicted class).}
+\item{...}{Not used.}
 }
 \value{
 A tibble that contains predicted class.

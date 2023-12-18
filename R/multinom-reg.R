@@ -60,11 +60,13 @@ softmax_regression <- function(
 #' @param object An object of class \code{baritsu_sr}.
 #' @param newdata A data.frame.
 #' @param type Type of prediction. One of "both", "class", or "prob".
+#' @param ... Not used.
 #' @returns A tibble that contains the predicted values and/or probabilities.
 #' @export
 predict.baritsu_sr <- function(
   object, newdata,
-  type = c("both", "class", "prob")
+  type = c("both", "class", "prob"),
+  ...
 ) {
   type <- rlang::arg_match(type, c("both", "class", "prob"))
   if (!is_exptr_of(object, "SoftmaxRegression")) {

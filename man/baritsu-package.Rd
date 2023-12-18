@@ -8,6 +8,13 @@
 \description{
 A collection of wrappers around the 'mlpack' package that allows passing formula as their argument.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://paithiov909.github.io/baritsu/}
+}
+
+}
 \author{
 \strong{Maintainer}: Akiru Kato \email{paithiov909@gmail.com}
 

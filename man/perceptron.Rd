@@ -2,7 +2,7 @@
 % Please edit documentation in R/mlp.R
 \name{perceptron}
 \alias{perceptron}
-\title{Perceptron}
+\title{Single level neural network}
 \usage{
 perceptron(formula = NULL, data = NULL, epochs = 100, x = NULL, y = NULL)
 }

@@ -77,9 +77,10 @@ linear_regression <- function(
 #'
 #' @param object An object of class \code{baritsu_lr}.
 #' @param newdata A data.frame.
+#' @param ... Not used.
 #' @returns A tibble that contains the predicted values.
 #' @export
-predict.baritsu_lr <- function(object, newdata) {
+predict.baritsu_lr <- function(object, newdata, ...) {
   newdata <-
     hardhat::forge(
       newdata,

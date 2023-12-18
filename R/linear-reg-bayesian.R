@@ -49,10 +49,11 @@ linear_regression_bayesian <- function(
 #'
 #' @param object An object of class \code{baritsu_blr}.
 #' @param newdata A data.frame.
+#' @param ... Not used.
 #' @returns A tibble that contains the predicted values
 #' and the standard deviations of the predictive distribution.
 #' @export
-predict.baritsu_blr <- function(object, newdata) {
+predict.baritsu_blr <- function(object, newdata, ...) {
   if (!is_exptr_of(object, "BayesianLinearRegression")) {
     rlang::abort("stored model must be a 'BayesianLinearRegression'.")
   }

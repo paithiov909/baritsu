@@ -58,8 +58,7 @@ register_mlp_baritsu <- function() {
       args =
         list(
           object = rlang::expr(object$fit), # nolint
-          newdata = rlang::expr(new_data), # nolint
-          type = "class"
+          newdata = rlang::expr(new_data) # nolint
         )
     )
   )

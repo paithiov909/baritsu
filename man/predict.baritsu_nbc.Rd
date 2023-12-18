@@ -4,7 +4,7 @@
 \alias{predict.baritsu_nbc}
 \title{Naive Bayes Classifier prediction}
 \usage{
-\method{predict}{baritsu_nbc}(object, newdata, type = c("both", "class", "prob"))
+\method{predict}{baritsu_nbc}(object, newdata, type = c("both", "class", "prob"), ...)
 }
 \arguments{
 \item{object}{An object of class \code{baritsu_nbc}.}
@@ -12,6 +12,8 @@
 \item{newdata}{A data.frame.}
 
 \item{type}{Type of prediction. One of "both", "class", or "prob".}
+
+\item{...}{Not used.}
 }
 \value{
 A tibble that contains the predicted values and/or probabilities.

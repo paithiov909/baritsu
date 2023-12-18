@@ -3,7 +3,7 @@
 \name{details_mlp_baritsu}
 \alias{details_mlp_baritsu}
 \alias{register_mlp_baritsu}
-\title{Single layer neural network via baritsu}
+\title{Single level neural network via baritsu}
 \usage{
 register_mlp_baritsu()
 }

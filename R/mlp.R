@@ -51,11 +51,10 @@ perceptron <- function(
 #'
 #' @param object An object of class \code{baritsu_prc}.
 #' @param newdata A data.frame.
-#' @param type Type of prediction (this model only returns predicted class).
+#' @param ... Not used.
 #' @returns A tibble that contains predicted class.
 #' @export
-predict.baritsu_prc <- function(object, newdata, type = "class") {
-  type <- rlang::arg_match(type, "class")
+predict.baritsu_prc <- function(object, newdata, ...) {
   if (!is_exptr_of(object, "PerceptronModel")) {
     rlang::abort("stored model must be a 'PerceptronModel'.")
   }

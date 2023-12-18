@@ -4,12 +4,14 @@
 \alias{predict.baritsu_lr}
 \title{Linear regression prediction}
 \usage{
-\method{predict}{baritsu_lr}(object, newdata)
+\method{predict}{baritsu_lr}(object, newdata, ...)
 }
 \arguments{
 \item{object}{An object of class \code{baritsu_lr}.}
 
 \item{newdata}{A data.frame.}
+
+\item{...}{Not used.}
 }
 \value{
 A tibble that contains the predicted values.
