@@ -1,8 +1,12 @@
-^baritsu\.Rproj$
+^\.github$
 ^\.Rproj\.user$
 ^\.devcontainer$
 ^\.vscode$
+^docs$
+^pkgdown$
+^baritsu\.Rproj$
 ^LICENSE\.md$
 ^README\.Rmd$
 ^cran-comments\.md$
 ^renovate\.json$
+^_pkgdown\.yml$

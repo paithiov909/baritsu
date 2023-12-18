@@ -5,14 +5,20 @@
 
 <!-- badges: start -->
 
+[![baritsu status
+badge](https://paithiov909.r-universe.dev/badges/baritsu)](https://paithiov909.r-universe.dev/baritsu)
+[![R-CMD-check](https://github.com/paithiov909/baritsu/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/paithiov909/baritsu/actions/workflows/R-CMD-check.yaml)
+[![codecov](https://codecov.io/gh/paithiov909/baritsu/branch/main/graph/badge.svg?token=LWH2AFDEMY)](https://app.codecov.io/gh/paithiov909/baritsu)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 The main goal of baritsu is to implement wrappers around
 [mlpack](https://www.mlpack.org/doc/stable/r_documentation.html) that
-allows formula as their argument. Also, baritsu provides parsnip engines
-of those wrappers, so they can be used with tidymodels workflows.
+allows formula as their argument. Also, baritsu provides
+[parsnip](https://parsnip.tidymodels.org/) engines of those wrappers, so
+they can be used with [tidymodels](https://www.tidymodels.org/)
+workflows.
 
 ## Installation
 
