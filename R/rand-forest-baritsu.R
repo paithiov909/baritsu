@@ -102,5 +102,5 @@ register_rand_forest_baritsu <- function() {
         )
     )
   )
-  parsnip::set_dependency("rand_forest", eng = "baritsu", pkg = "baritsu")
+  parsnip::set_dependency("rand_forest", "baritsu", "baritsu")
 }

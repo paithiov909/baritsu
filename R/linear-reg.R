@@ -15,8 +15,8 @@
 #' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param mixture Regularization parameter within `[0, 1]` (default: 1.0)
-#' This value will be passed to lambda1 (for l1-norm penalty) as is,
-#' and `1.0 - mixture` will be passed to lambda2 (for l2-norm penalty).
+#' This value will be passed to lambda1 (for L1-norm penalty) as is,
+#' and `1.0 - mixture` will be passed to lambda2 (for L2-norm penalty).
 #' @param no_intercept Logical; passed to [mlpack::lars()].
 #' @param no_normalize Logical; passed to [mlpack::lars()].
 #' @param use_cholesky Logical; passed to [mlpack::lars()].

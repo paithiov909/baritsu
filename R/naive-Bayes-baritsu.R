@@ -72,4 +72,5 @@ register_naive_Bayes_baritsu <- function() { # nolint
         )
     )
   )
+  parsnip::set_dependency("naive_Bayes", "baritsu", "baritsu")
 }

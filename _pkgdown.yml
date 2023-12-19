@@ -5,6 +5,7 @@ reference:
   - title: Classification
     contents:
       - decision_trees
+      - linear_svm
       - naive_bayes
       - perceptron
       - random_forest

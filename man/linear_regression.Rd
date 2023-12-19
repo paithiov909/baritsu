@@ -23,8 +23,8 @@ If a recipe is passed, \code{data} is ignored.}
 \item{data}{A data.frame.}
 
 \item{mixture}{Regularization parameter within \verb{[0, 1]} (default: 1.0)
-This value will be passed to lambda1 (for l1-norm penalty) as is,
-and \code{1.0 - mixture} will be passed to lambda2 (for l2-norm penalty).}
+This value will be passed to lambda1 (for L1-norm penalty) as is,
+and \code{1.0 - mixture} will be passed to lambda2 (for L2-norm penalty).}
 
 \item{no_intercept}{Logical; passed to \code{\link[mlpack:lars]{mlpack::lars()}}.}
 

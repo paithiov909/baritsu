@@ -6,6 +6,7 @@
   register_multinom_reg_baritsu()
   register_naive_Bayes_baritsu()
   register_rand_forest_baritsu()
+  register_svm_linear_baritsu()
 }
 
 # TODO: check translated models out of specs

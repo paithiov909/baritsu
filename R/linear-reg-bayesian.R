@@ -10,7 +10,7 @@
 #' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param center Logical;
-#' if enabled, centers the data and fit the intercept.
+#' if enabled, centers the data and fits the intercept.
 #' @param scale Logical;
 #' if enabled, scales each feature by their standard deviations.
 #' @param x Design matrix.

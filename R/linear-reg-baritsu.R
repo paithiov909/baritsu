@@ -71,5 +71,5 @@ register_linear_reg_baritsu <- function() {
         )
     )
   )
-  parsnip::set_dependency("linear_reg", eng = "baritsu", pkg = "baritsu")
+  parsnip::set_dependency("linear_reg", "baritsu", "baritsu")
 }

@@ -1,51 +1,50 @@
-#' Multinomial regression via baritsu
+#' L2-regularized support vector machine via baritsu
 #'
-#' [mlpack::softmax_regression()] is an implementation of
-#' a softmax regression, a generalization of logistic regression
-#' to the multiclass case, which has support for L2 regularization.
+#' [mlpack::linear_svm()] is an implementation of
+#' linear SVM for multiclass classification.
 #'
 #' @details
 #' For this engine, there is a single mode: classification
 #'
 #' ## Tuning Parameters
 #'
-#' This model has 1 tuning parameter:
+#' This engine has 1 tuning parameter:
 #'
-#' - `penalty`: Amount of Regularization (type: double)
+#' - `margin`: Insensitivity Margin (type: double)
 #'
 #' ## Preprocessing requirements
 #'
-#' Predictors should have the same scale.
+#' Predictors should be centered and scaled.
 #' One way to achieve this is to center and scale each
 #' so that each predictor has mean zero and a variance of one.
 #'
-#' @name details_multinom_reg_baritsu
+#' @name details_svm_linear_baritsu
 #' @keywords internal
 NULL
 
-register_multinom_reg_baritsu <- function() {
-  parsnip::set_model_engine("multinom_reg", "classification", "baritsu")
+register_svm_linear_baritsu <- function() {
+  parsnip::set_model_engine("svm_linear", "classification", "baritsu")
   parsnip::set_fit(
-    model = "multinom_reg",
+    model = "svm_linear",
     eng = "baritsu",
     mode = "classification",
     value = list(
       interface = "formula",
       protect = c("formula", "data", "x", "y"),
-      func = c(pkg = "baritsu", fun = "softmax_regression"),
+      func = c(pkg = "baritsu", fun = "linear_svm"),
       defaults = list()
     )
   )
   parsnip::set_model_arg(
-    model = "multinom_reg",
+    model = "svm_linear",
     eng = "baritsu",
-    parsnip = "penalty",
-    original = "penalty",
-    func = list(pkg = "dials", fun = "penalty"),
+    parsnip = "margin",
+    original = "margin",
+    func = list(pkg = "dials", fun = "margin"),
     has_submodel = FALSE
   )
   parsnip::set_encoding(
-    model = "multinom_reg",
+    model = "svm_linear",
     eng = "baritsu",
     mode = "classification",
     options = list(
@@ -56,7 +55,7 @@ register_multinom_reg_baritsu <- function() {
     )
   )
   parsnip::set_pred(
-    model = "multinom_reg",
+    model = "svm_linear",
     eng = "baritsu",
     mode = "classification",
     type = "class",
@@ -73,7 +72,7 @@ register_multinom_reg_baritsu <- function() {
     )
   )
   parsnip::set_pred(
-    model = "multinom_reg",
+    model = "svm_linear",
     eng = "baritsu",
     mode = "classification",
     type = "prob",
@@ -89,5 +88,5 @@ register_multinom_reg_baritsu <- function() {
         )
     )
   )
-  parsnip::set_dependency("multinom_reg", "baritsu", "baritsu")
+  parsnip::set_dependency("svm_linear", "baritsu", "baritsu")
 }

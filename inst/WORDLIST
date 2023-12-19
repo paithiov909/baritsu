@@ -1,12 +1,14 @@
 Breiman
-Perceptron
+SGD
 Softmax
 Stagewise
 autoselects
 fallbacks
 laSso
+lbfgs
 mlpack
 multiclass
 perceptron
+psgd
 softmax
 tibble

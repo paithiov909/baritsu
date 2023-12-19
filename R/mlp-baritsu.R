@@ -64,4 +64,5 @@ register_mlp_baritsu <- function() {
         )
     )
   )
+  parsnip::set_dependency("mlp", "baritsu", "baritsu")
 }

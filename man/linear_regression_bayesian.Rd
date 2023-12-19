@@ -21,7 +21,7 @@ If a recipe is passed, \code{data} is ignored.}
 \item{data}{A data.frame.}
 
 \item{center}{Logical;
-if enabled, centers the data and fit the intercept.}
+if enabled, centers the data and fits the intercept.}
 
 \item{scale}{Logical;
 if enabled, scales each feature by their standard deviations.}
