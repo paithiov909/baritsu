@@ -40,6 +40,9 @@
     <loc>https://paithiov909.github.io/baritsu/reference/details_rand_forest_baritsu.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/baritsu/reference/details_svm_linear_baritsu.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/baritsu/reference/index.html</loc>
   </url>
   <url>
@@ -47,6 +50,9 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/baritsu/reference/linear_regression_bayesian.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/baritsu/reference/linear_svm.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/baritsu/reference/naive_bayes.html</loc>
