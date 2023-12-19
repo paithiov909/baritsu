@@ -3,7 +3,7 @@
 #' A wrapper around [mlpack::softmax_regression()]
 #' that allows passing a formula.
 #'
-#' @seealso [mlpack::softmax_regression()]
+#' @seealso [mlpack::softmax_regression()] [predict.baritsu_sr()]
 #'
 #' @param formula A formula.
 #' Alternatively, a recipe object can be passed for this argument.
@@ -53,15 +53,7 @@ softmax_regression <- function(
   sr_model
 }
 
-#' Softmax regression prediction
-#'
-#' Predicts with new data using a softmax regression model.
-#'
-#' @param object An object of class \code{baritsu_sr}.
-#' @param newdata A data.frame.
-#' @param type Type of prediction. One of "both", "class", or "prob".
-#' @param ... Not used.
-#' @returns A tibble that contains the predicted values and/or probabilities.
+#' @rdname predict.baritsu
 #' @export
 predict.baritsu_sr <- function(
   object, newdata,

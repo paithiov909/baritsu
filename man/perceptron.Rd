@@ -27,5 +27,5 @@ A wrapper around \code{\link[mlpack:perceptron]{mlpack::perceptron()}}
 that allows passing a formula.
 }
 \seealso{
-\code{\link[mlpack:perceptron]{mlpack::perceptron()}}
+\code{\link[mlpack:perceptron]{mlpack::perceptron()}} \code{\link[=predict.baritsu_prc]{predict.baritsu_prc()}}
 }

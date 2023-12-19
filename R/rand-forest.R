@@ -2,7 +2,7 @@
 #'
 #' A wrapper around [mlpack::random_forest()] that allows passing a formula.
 #'
-#' @seealso [mlpack::random_forest()]
+#' @seealso [mlpack::random_forest()] [predict.baritsu_rf()]
 #'
 #' @param formula A formula.
 #' Alternatively, a recipe object can be passed for this argument.
@@ -60,15 +60,7 @@ refit.baritsu_rf <- function(object, ...) {
   object # TODO: deal with `warm_start`
 }
 
-#' Random forests prediction
-#'
-#' Predicts with new data using a random forest model.
-#'
-#' @param object An object of class \code{baritsu_rf}.
-#' @param newdata A data.frame.
-#' @param type Type of prediction. One of "both", "class", or "prob".
-#' @param ... Not used.
-#' @returns A tibble that contains the predicted values and/or probabilities.
+#' @rdname predict.baritsu
 #' @export
 predict.baritsu_rf <- function(
   object, newdata,

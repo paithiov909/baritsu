@@ -8,6 +8,7 @@
 #' fallbacks to [mlpack::linear_regression()] for performance.
 #'
 #' @seealso [mlpack::linear_regression()] [mlpack::lars()]
+#' [predict.baritsu_lr()]
 #'
 #' @param formula A formula.
 #' Alternatively, a recipe object can be passed for this argument.
@@ -71,14 +72,7 @@ linear_regression <- function(
   lr_model
 }
 
-#' Linear regression prediction
-#'
-#' Predicts with new data using a linear regression model.
-#'
-#' @param object An object of class \code{baritsu_lr}.
-#' @param newdata A data.frame.
-#' @param ... Not used.
-#' @returns A tibble that contains the predicted values.
+#' @rdname predict.baritsu
 #' @export
 predict.baritsu_lr <- function(object, newdata, ...) {
   newdata <-

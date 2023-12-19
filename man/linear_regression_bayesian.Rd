@@ -38,5 +38,5 @@ A wrapper around \code{\link[mlpack:bayesian_linear_regression]{mlpack::bayesian
 passing a formula.
 }
 \seealso{
-\code{\link[mlpack:bayesian_linear_regression]{mlpack::bayesian_linear_regression()}}
+\code{\link[mlpack:bayesian_linear_regression]{mlpack::bayesian_linear_regression()}} \code{\link[=predict.baritsu_blr]{predict.baritsu_blr()}}
 }

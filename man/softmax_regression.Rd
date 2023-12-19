@@ -39,5 +39,5 @@ A wrapper around \code{\link[mlpack:softmax_regression]{mlpack::softmax_regressi
 that allows passing a formula.
 }
 \seealso{
-\code{\link[mlpack:softmax_regression]{mlpack::softmax_regression()}}
+\code{\link[mlpack:softmax_regression]{mlpack::softmax_regression()}} \code{\link[=predict.baritsu_sr]{predict.baritsu_sr()}}
 }

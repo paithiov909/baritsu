@@ -3,7 +3,7 @@
 #' A wrapper around [mlpack::bayesian_linear_regression()] that allows
 #' passing a formula.
 #'
-#' @seealso [mlpack::bayesian_linear_regression()]
+#' @seealso [mlpack::bayesian_linear_regression()] [predict.baritsu_blr()]
 #'
 #' @param formula A formula.
 #' Alternatively, a recipe object can be passed for this argument.
@@ -43,15 +43,7 @@ linear_regression_bayesian <- function(
   blr_model
 }
 
-#' Bayesian linear regression prediction
-#'
-#' Predicts with new data using a Bayesian linear regression model.
-#'
-#' @param object An object of class \code{baritsu_blr}.
-#' @param newdata A data.frame.
-#' @param ... Not used.
-#' @returns A tibble that contains the predicted values
-#' and the standard deviations of the predictive distribution.
+#' @rdname predict.baritsu
 #' @export
 predict.baritsu_blr <- function(object, newdata, ...) {
   if (!is_exptr_of(object, "BayesianLinearRegression")) {

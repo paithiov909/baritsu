@@ -49,4 +49,5 @@ fallbacks to \code{\link[mlpack:linear_regression]{mlpack::linear_regression()}}
 }
 \seealso{
 \code{\link[mlpack:linear_regression]{mlpack::linear_regression()}} \code{\link[mlpack:lars]{mlpack::lars()}}
+\code{\link[=predict.baritsu_lr]{predict.baritsu_lr()}}
 }

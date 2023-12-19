@@ -31,3 +31,6 @@ An object of class \code{baritsu_nbc}.
 \description{
 A wrapper around \code{\link[mlpack:nbc]{mlpack::nbc()}} that allows passing a formula.
 }
+\seealso{
+\code{\link[mlpack:nbc]{mlpack::nbc()}} \code{\link[=predict.baritsu_nbc]{predict.baritsu_nbc()}}
+}

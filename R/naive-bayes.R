@@ -2,6 +2,8 @@
 #'
 #' A wrapper around [mlpack::nbc()] that allows passing a formula.
 #'
+#' @seealso [mlpack::nbc()] [predict.baritsu_nbc()]
+#'
 #' @param formula A formula.
 #' Alternatively, a recipe object can be passed for this argument.
 #' If a recipe is passed, \code{data} is ignored.
@@ -37,15 +39,7 @@ naive_bayes <- function(
   nbc_model
 }
 
-#' Naive Bayes Classifier prediction
-#'
-#' Predicts with new data using a Naive Bayes Classifier model.
-#'
-#' @param object An object of class \code{baritsu_nbc}.
-#' @param newdata A data.frame.
-#' @param type Type of prediction. One of "both", "class", or "prob".
-#' @param ... Not used.
-#' @returns A tibble that contains the predicted values and/or probabilities.
+#' @rdname predict.baritsu
 #' @export
 predict.baritsu_nbc <- function(
   object, newdata,

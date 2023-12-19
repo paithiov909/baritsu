@@ -1,3 +1,19 @@
 url: https://paithiov909.github.io/baritsu/
 template:
   bootstrap: 5
+reference:
+  - title: Classification
+    contents:
+      - decision_trees
+      - naive_bayes
+      - perceptron
+      - random_forest
+      - softmax_regression
+  - title: Regression
+    contents:
+      - linear_regression
+      - linear_regression_bayesian
+  - title: Prediction
+    contents:
+      - predict.baritsu
+      - parsnip_engines_baritsu

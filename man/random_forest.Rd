@@ -48,5 +48,5 @@ An object of class \code{baritsu_rf}.
 A wrapper around \code{\link[mlpack:random_forest]{mlpack::random_forest()}} that allows passing a formula.
 }
 \seealso{
-\code{\link[mlpack:random_forest]{mlpack::random_forest()}}
+\code{\link[mlpack:random_forest]{mlpack::random_forest()}} \code{\link[=predict.baritsu_rf]{predict.baritsu_rf()}}
 }

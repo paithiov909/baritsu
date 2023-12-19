@@ -12,6 +12,7 @@ A collection of wrappers around the 'mlpack' package that allows passing formula
 Useful links:
 \itemize{
   \item \url{https://paithiov909.github.io/baritsu/}
+  \item Report bugs at \url{https://github.com/paithiov909/baritsu/issues}
 }
 
 }

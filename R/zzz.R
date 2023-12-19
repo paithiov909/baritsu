@@ -9,6 +9,3 @@
 }
 
 # TODO: check translated models out of specs
-# TODO: readme, badge
-# TODO: pkgdown
-# TODO: check workflow

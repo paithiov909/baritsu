@@ -45,5 +45,5 @@ To prevent masking of \code{\link[parsnip:decision_tree]{parsnip::decision_tree(
 this function is named \code{decision_trees} (plural form!)
 }
 \seealso{
-\code{\link[mlpack:decision_tree]{mlpack::decision_tree()}}
+\code{\link[mlpack:decision_tree]{mlpack::decision_tree()}} \code{\link[=predict.baritsu_dt]{predict.baritsu_dt()}}
 }

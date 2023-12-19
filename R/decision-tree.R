@@ -6,7 +6,7 @@
 #' To prevent masking of [parsnip::decision_tree()],
 #' this function is named `decision_trees` (plural form!)
 #'
-#' @seealso [mlpack::decision_tree()]
+#' @seealso [mlpack::decision_tree()] [predict.baritsu_dt()]
 #'
 #' @param formula A formula.
 #' Alternatively, a recipe object can be passed for this argument.
@@ -57,15 +57,7 @@ decision_trees <- function(
   dt_model
 }
 
-#' Decision trees prediction
-#'
-#' Predicts with new data using a decision tree model.
-#'
-#' @param object An object of class \code{baritsu_dt}.
-#' @param newdata A data.frame.
-#' @param type Type of prediction. One of "both", "class", or "prob".
-#' @param ... Not used.
-#' @returns A tibble that contains the predicted values and/or probabilities.
+#' @rdname predict.baritsu
 #' @export
 predict.baritsu_dt <- function(
   object, newdata,

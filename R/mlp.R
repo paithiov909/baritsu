@@ -3,7 +3,7 @@
 #' A wrapper around [mlpack::perceptron()]
 #' that allows passing a formula.
 #'
-#' @seealso [mlpack::perceptron()]
+#' @seealso [mlpack::perceptron()] [predict.baritsu_prc()]
 #'
 #' @param formula A formula.
 #' Alternatively, a recipe object can be passed for this argument.
@@ -45,14 +45,7 @@ perceptron <- function(
   prc_model
 }
 
-#' Perceptron prediction
-#'
-#' Predicts with new data using a perceptron model.
-#'
-#' @param object An object of class \code{baritsu_prc}.
-#' @param newdata A data.frame.
-#' @param ... Not used.
-#' @returns A tibble that contains predicted class.
+#' @rdname predict.baritsu
 #' @export
 predict.baritsu_prc <- function(object, newdata, ...) {
   if (!is_exptr_of(object, "PerceptronModel")) {
@@ -69,7 +62,7 @@ predict.baritsu_prc <- function(object, newdata, ...) {
       input_model = object$fit,
       test = newdata$predictors
     )
-  # this model only returns predicted class
+  # this model only returns predictions
   labs <- levels(object$blueprint$ptypes$outcomes[[1]])
   tibble::tibble(
     .pred_class = factor(
