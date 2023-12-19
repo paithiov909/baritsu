@@ -67,7 +67,6 @@ predict.baritsu_rf <- function(
   type = c("both", "class", "prob"),
   ...
 ) {
-  type <- rlang::arg_match(type, c("both", "class", "prob"))
   if (!is_exptr_of(object, "RandomForestModel")) {
     rlang::abort("stored model must be a 'RandomForestModel'.")
   }

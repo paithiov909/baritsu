@@ -21,6 +21,8 @@
 #'
 #' @name details_multinom_reg_baritsu
 #' @keywords internal
+NULL
+
 register_multinom_reg_baritsu <- function() {
   parsnip::set_model_engine("multinom_reg", "classification", "baritsu")
   parsnip::set_fit(

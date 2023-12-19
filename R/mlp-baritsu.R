@@ -14,6 +14,8 @@
 #'
 #' @name details_mlp_baritsu
 #' @keywords internal
+NULL
+
 register_mlp_baritsu <- function() {
   parsnip::set_model_engine("mlp", "classification", "baritsu")
   parsnip::set_fit(

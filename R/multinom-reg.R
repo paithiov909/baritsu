@@ -60,7 +60,6 @@ predict.baritsu_sr <- function(
   type = c("both", "class", "prob"),
   ...
 ) {
-  type <- rlang::arg_match(type, c("both", "class", "prob"))
   if (!is_exptr_of(object, "SoftmaxRegression")) {
     rlang::abort("stored model must be a 'SoftmaxRegression'.")
   }

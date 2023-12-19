@@ -17,6 +17,8 @@
 #'
 #' @name details_linear_reg_baritsu
 #' @keywords internal
+NULL
+
 register_linear_reg_baritsu <- function() {
   parsnip::set_model_engine("linear_reg", "regression", "baritsu")
   parsnip::set_fit(

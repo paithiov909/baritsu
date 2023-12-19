@@ -10,5 +10,4 @@
 #' (and also the standard deviations of the predictive distribution
 #' only for \code{predict.baritsu_blr}).
 #' @name predict.baritsu
-#' @keywords internal
 NULL

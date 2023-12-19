@@ -16,6 +16,8 @@
 #'
 #' @name details_decision_tree_baritsu
 #' @keywords internal
+NULL
+
 register_decision_tree_baritsu <- function() {
   parsnip::set_model_engine("decision_tree", "classification", "baritsu")
   parsnip::set_fit(

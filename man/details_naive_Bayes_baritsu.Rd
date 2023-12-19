@@ -2,11 +2,7 @@
 % Please edit documentation in R/naive-Bayes-baritsu.R
 \name{details_naive_Bayes_baritsu}
 \alias{details_naive_Bayes_baritsu}
-\alias{register_naive_Bayes_baritsu}
 \title{Naive Bayes models via baritsu}
-\usage{
-register_naive_Bayes_baritsu()
-}
 \description{
 \code{\link[mlpack:nbc]{mlpack::nbc()}} is an implementation of
 a parametric Naive Bayes Classifier, used for classification.

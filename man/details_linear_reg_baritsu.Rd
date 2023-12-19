@@ -2,11 +2,7 @@
 % Please edit documentation in R/linear-reg-baritsu.R
 \name{details_linear_reg_baritsu}
 \alias{details_linear_reg_baritsu}
-\alias{register_linear_reg_baritsu}
 \title{Linear regression via baritsu}
-\usage{
-register_linear_reg_baritsu()
-}
 \description{
 \code{\link[mlpack:lars]{mlpack::lars()}} is an implementation of Least Angle Regression
 (Stagewise/laSso), also known as LARS.

@@ -2,11 +2,7 @@
 % Please edit documentation in R/mlp-baritsu.R
 \name{details_mlp_baritsu}
 \alias{details_mlp_baritsu}
-\alias{register_mlp_baritsu}
 \title{Single level neural network via baritsu}
-\usage{
-register_mlp_baritsu()
-}
 \description{
 \code{\link[mlpack:perceptron]{mlpack::perceptron()}} is an implementation of a perceptron,
 which is a single level neural network.

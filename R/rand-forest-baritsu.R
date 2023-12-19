@@ -17,6 +17,8 @@
 #'
 #' @name details_rand_forest_baritsu
 #' @keywords internal
+NULL
+
 register_rand_forest_baritsu <- function() {
   parsnip::set_model_engine("rand_forest", "classification", "baritsu")
   parsnip::set_fit(

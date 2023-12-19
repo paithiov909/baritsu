@@ -44,4 +44,3 @@ only for \code{predict.baritsu_blr}).
 \description{
 Predicts with new data using a stored mlpack model.
 }
-\keyword{internal}

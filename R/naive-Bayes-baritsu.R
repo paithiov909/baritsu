@@ -12,6 +12,8 @@
 #'
 #' @name details_naive_Bayes_baritsu
 #' @keywords internal
+NULL
+
 register_naive_Bayes_baritsu <- function() { # nolint
   parsnip::set_model_engine("naive_Bayes", "classification", "baritsu")
   parsnip::set_fit(

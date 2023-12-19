@@ -2,11 +2,7 @@
 % Please edit documentation in R/decision-tree-baritsu.R
 \name{details_decision_tree_baritsu}
 \alias{details_decision_tree_baritsu}
-\alias{register_decision_tree_baritsu}
 \title{Decision trees via baritsu}
-\usage{
-register_decision_tree_baritsu()
-}
 \description{
 \code{\link[mlpack:decision_tree]{mlpack::decision_tree()}} is an implementation of
 an ID3-style decision tree for classification,

@@ -2,11 +2,7 @@
 % Please edit documentation in R/rand-forest-baritsu.R
 \name{details_rand_forest_baritsu}
 \alias{details_rand_forest_baritsu}
-\alias{register_rand_forest_baritsu}
 \title{Random forests via baritsu}
-\usage{
-register_rand_forest_baritsu()
-}
 \description{
 \code{\link[mlpack:random_forest]{mlpack::random_forest()}} is an implementation of
 the standard random forest algorithm

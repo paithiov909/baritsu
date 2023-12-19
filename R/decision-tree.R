@@ -64,7 +64,6 @@ predict.baritsu_dt <- function(
   type = c("both", "class", "prob"),
   ...
 ) {
-  type <- rlang::arg_match(type, c("both", "class", "prob"))
   if (!is_exptr_of(object, "DecisionTreeModel")) {
     rlang::abort("stored model must be a 'DecisionTreeModel'.")
   }

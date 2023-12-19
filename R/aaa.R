@@ -78,6 +78,7 @@ mold <- function(formula, data, x, y) {
 }
 
 pred_to_tbl <- function(pred, labs, type) {
+  type <- rlang::arg_match(type, c("both", "class", "prob"))
   out <-
     tibble::tibble(
       .pred_class = factor(

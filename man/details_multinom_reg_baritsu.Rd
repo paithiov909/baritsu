@@ -2,11 +2,7 @@
 % Please edit documentation in R/multinom-reg-baritsu.R
 \name{details_multinom_reg_baritsu}
 \alias{details_multinom_reg_baritsu}
-\alias{register_multinom_reg_baritsu}
 \title{Multinomial regression via baritsu}
-\usage{
-register_multinom_reg_baritsu()
-}
 \description{
 \code{\link[mlpack:softmax_regression]{mlpack::softmax_regression()}} is an implementation of
 a softmax regression, a generalization of logistic regression
