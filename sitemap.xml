@@ -52,28 +52,13 @@
     <loc>https://paithiov909.github.io/baritsu/reference/naive_bayes.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/baritsu/reference/parsnip_engines_baritsu.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/baritsu/reference/perceptron.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu_blr.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu_dt.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu_lr.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu_nbc.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu_prc.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu_rf.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu_sr.html</loc>
+    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/baritsu/reference/random_forest.html</loc>
