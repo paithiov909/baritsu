@@ -91,10 +91,10 @@ test_that("linear_reg works for formula interface", {
   expect_s3_class(out, "baritsu_lr")
 })
 
-test_that("linear_reg works with tidymodels", {
+test_that("lars works", {
   spec <- lars(
-    lambda1 = 0.0,
-    lambda2 = 0.5
+    penalty_L1 = 0.0,
+    penalty_L2 = 0.5
   ) |>
     parsnip::set_engine("baritsu") |>
     parsnip::set_mode("regression")

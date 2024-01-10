@@ -5,7 +5,12 @@
 \alias{details_lars_baritsu}
 \title{Least angle regression}
 \usage{
-lars(mode = "regression", engine = "baritsu", lambda1 = NULL, lambda2 = NULL)
+lars(
+  mode = "regression",
+  engine = "baritsu",
+  penalty_L1 = NULL,
+  penalty_L2 = NULL
+)
 }
 \arguments{
 \item{mode}{A single character string for the type of model.
@@ -14,9 +19,9 @@ The only possible value for this model is "regression".}
 \item{engine}{A single character string specifying what computational engine
 to use for fitting.}
 
-\item{lambda1}{Regularization parameter for L1-norm penalty.}
+\item{penalty_L1}{Regularization parameter for L1-norm penalty.}
 
-\item{lambda2}{Regularization parameter for L2-norm penalty.}
+\item{penalty_L2}{Regularization parameter for L2-norm penalty.}
 }
 \description{
 \code{lars()} defines a model that can predict numeric values from

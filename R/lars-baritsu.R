@@ -21,24 +21,24 @@
 #' The only possible value for this model is "regression".
 #' @param engine A single character string specifying what computational engine
 #' to use for fitting.
-#' @param lambda1 Regularization parameter for L1-norm penalty.
-#' @param lambda2 Regularization parameter for L2-norm penalty.
+#' @param penalty_L1 Regularization parameter for L1-norm penalty.
+#' @param penalty_L2 Regularization parameter for L2-norm penalty.
 #' @rdname details_lars_baritsu
 #' @aliases details_lars_baritsu
 #' @export
 lars <- function(
   mode = "regression",
   engine = "baritsu",
-  lambda1 = NULL,
-  lambda2 = NULL
+  penalty_L1 = NULL, # nolint
+  penalty_L2 = NULL  # nolint
 ) {
   if (mode != "regression") {
     rlang::abort("`mode` should be 'regression'")
   }
   # Capture the arguments in quosures
   args <- list(
-    lambda1 = rlang::enquo(lambda1),
-    lambda2 = rlang::enquo(lambda2)
+    penalty_L1 = rlang::enquo(penalty_L1),
+    penalty_L2 = rlang::enquo(penalty_L2)
   )
   parsnip::new_model_spec(
     "lars",
@@ -57,14 +57,14 @@ lars <- function(
 update.lars <- function(
   object,
   parameters = NULL,
-  lambda1 = NULL,
-  lambda2 = NULL,
+  penalty_L1 = NULL, # nolint
+  penalty_L2 = NULL, # nolint
   fresh = FALSE,
   ...
 ) {
   args <- list(
-    lambda1 = rlang::enquo(lambda1),
-    lambda2 = rlang::enquo(lambda2)
+    penalty_L1 = rlang::enquo(penalty_L1),
+    penalty_L2 = rlang::enquo(penalty_L2)
   )
   parsnip::update_spec(
     object = object,
@@ -80,12 +80,12 @@ update.lars <- function(
 tunable.lars <- function(x, ...) {
   tibble::tibble(
     name = c(
-      "lambda1",
-      "lambda2"
+      "penalty_L1",
+      "penalty_L2"
     ),
     call_info = list(
-      list(pkg = "dials", fun = "penalty_L1", range = c(0, 1)),
-      list(pkg = "dials", fun = "penalty_L2", range = c(0, 1))
+      list(pkg = "dials", fun = "penalty_L1", range = c(-10, 0)),
+      list(pkg = "dials", fun = "penalty_L2", range = c(-10, 0))
     ),
     source = "model_spec",
     component = "lars",
@@ -115,17 +115,23 @@ register_lars_baritsu <- function() {
   parsnip::set_model_arg(
     model = "lars",
     eng = "baritsu",
-    parsnip = "lambda1",
+    parsnip = "penalty_L1",
     original = "lambda1",
-    func = list(pkg = "dials", fun = "penalty_L1"),
+    func = list(
+      pkg = "dials", fun = "penalty_L1",
+      range = c(0, 1), trans = NULL
+    ),
     has_submodel = FALSE
   )
   parsnip::set_model_arg(
     model = "lars",
     eng = "baritsu",
-    parsnip = "lambda2",
+    parsnip = "penalty_L2",
     original = "lambda2",
-    func = list(pkg = "dials", fun = "penalty_L2"),
+    func = list(
+      pkg = "dials", fun = "penalty_L2",
+      range = c(0, 1), trans = NULL
+    ),
     has_submodel = FALSE
   )
   parsnip::set_encoding(
