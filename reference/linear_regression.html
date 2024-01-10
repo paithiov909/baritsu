@@ -12,7 +12,7 @@ that allows passing a formula."><!-- mathjax --><script src="https://cdnjs.cloud
     
     <a class="navbar-brand me-2" href="../index.html">baritsu</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,8 @@ that allows passing a formula.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">linear_regression</span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  mixture <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  lambda1 <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  lambda2 <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  no_intercept <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  no_normalize <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  use_cholesky <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -75,10 +76,12 @@ If a recipe is passed, <code>data</code> is ignored.</p></dd>
 <dd><p>A data.frame.</p></dd>
 
 
-<dt>mixture</dt>
-<dd><p>Regularization parameter within <code>[0, 1]</code> (default: 1.0)
-This value will be passed to lambda1 (for L1-norm penalty) as is,
-and <code>1.0 - mixture</code> will be passed to lambda2 (for L2-norm penalty).</p></dd>
+<dt>lambda1</dt>
+<dd><p>Regularization parameter for L1-norm penalty.</p></dd>
+
+
+<dt>lambda2</dt>
+<dd><p>Regularization parameter for L2-norm penalty.</p></dd>
 
 
 <dt>no_intercept</dt>
@@ -109,7 +112,7 @@ and <code>1.0 - mixture</code> will be passed to lambda2 (for L2-norm penalty).<
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>When the mixture is 0, this function
+    <p>When the lambda1 is 0, this function
 fallbacks to <code><a href="https://rdrr.io/pkg/mlpack/man/linear_regression.html" class="external-link">mlpack::linear_regression()</a></code> for performance.</p>
     </div>
     <div class="section level2">
