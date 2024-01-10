@@ -10,7 +10,7 @@
 #' - [details_rand_forest_baritsu]
 #' - [details_svm_linear_baritsu]
 #'
-#' - [details_linear_reg_baritsu]
+#' - [details_lars_baritsu]
 #'
 #' @name parsnip_engines_baritsu
 #' @keywords internal

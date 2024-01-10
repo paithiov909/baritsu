@@ -4,7 +4,7 @@
 #' that allows passing a formula.
 #'
 #' @details
-#' When the mixture is 0, this function
+#' When the lambda1 is 0, this function
 #' fallbacks to [mlpack::linear_regression()] for performance.
 #'
 #' @seealso [mlpack::linear_regression()] [mlpack::lars()]
@@ -14,9 +14,8 @@
 #' Alternatively, a recipe object can be passed for this argument.
 #' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
-#' @param mixture Regularization parameter within `[0, 1]` (default: 1.0)
-#' This value will be passed to lambda1 (for L1-norm penalty) as is,
-#' and `1.0 - mixture` will be passed to lambda2 (for L2-norm penalty).
+#' @param lambda1 Regularization parameter for L1-norm penalty.
+#' @param lambda2 Regularization parameter for L2-norm penalty.
 #' @param no_intercept Logical; passed to [mlpack::lars()].
 #' @param no_normalize Logical; passed to [mlpack::lars()].
 #' @param use_cholesky Logical; passed to [mlpack::lars()].
@@ -27,7 +26,8 @@
 linear_regression <- function(
   formula = NULL,
   data = NULL,
-  mixture = 1.0,
+  lambda1 = 0.0,
+  lambda2 = 0.0,
   no_intercept = FALSE,
   no_normalize = FALSE,
   use_cholesky = FALSE,
@@ -36,14 +36,16 @@ linear_regression <- function(
 ) {
   data <- mold(formula, data, x, y)
   # NA check is not necessary.
-  if (any(mixture < 0, mixture > 1)) {
-    rlang::warn("mixture should be a number between 0 and 1; set to 0.")
-    mixture <- 0.0
+  if (lambda1 < 0 || lambda1 > 1) {
+    rlang::warn("lambda1 should be a number between 0 and 1; set to 0.")
+    lambda1 <- 0.0
   }
-  # `mixture=1` corresponds to a pure lasso
-  lambda1 <- as.double(mixture) # for lasso
-  lambda2 <- as.double(1.0 - lambda1) # for ridge
+  if (lambda2 < 0 || lambda2 > 1) {
+    rlang::warn("lambda2 should be a number between 0 and 1; set to 0.")
+    lambda2 <- 0.0
+  }
 
+  # `lambda1=0` corresponds to a pure ridge regression
   if (lambda1 == 0.0) {
     lr_model <-
       mlpack::linear_regression(

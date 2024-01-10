@@ -15,7 +15,7 @@ baritsu has the following parsnip engines:
 \item \link{details_naive_Bayes_baritsu}
 \item \link{details_rand_forest_baritsu}
 \item \link{details_svm_linear_baritsu}
-\item \link{details_linear_reg_baritsu}
+\item \link{details_lars_baritsu}
 }
 }
 \keyword{internal}

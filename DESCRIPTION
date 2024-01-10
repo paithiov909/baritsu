@@ -1,6 +1,6 @@
 Package: baritsu
 Title: Wrappers Around 'mlpack'
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R:
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre"))
 Description: A collection of wrappers around the 'mlpack' package that
@@ -16,6 +16,7 @@ Imports:
     mlpack,
     recipes,
     rlang,
+    stats,
     tibble,
     utils
 Suggests:

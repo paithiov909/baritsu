@@ -1,6 +1,7 @@
 #' @import parsnip
 #' @importFrom utils globalVariables
-#' @importFrom generics refit
+#' @importFrom generics refit tunable
+#' @importFrom stats update
 #' @keywords internal
 "_PACKAGE"
 

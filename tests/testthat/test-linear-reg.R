@@ -11,12 +11,19 @@ rec <-
   ) |>
   recipes::step_scale(recipes::all_numeric_predictors())
 
-test_that("linear_reg warns when mixture is not in [0, 1]", {
+test_that("linear_reg warns when lambda is not within [0, 1]", {
   expect_warning(
     linear_regression(
       Sale_Price ~ .,
       data = ames_train,
-      mixture = -1
+      lambda1 = -1
+    )
+  )
+  expect_warning(
+    linear_regression(
+      Sale_Price ~ .,
+      data = ames_train,
+      lambda2 = -1
     )
   )
 })
@@ -26,14 +33,16 @@ test_that("linear_reg works for recipes", {
     linear_regression(
       rec,
       data = NULL,
-      mixture = 0.0
+      lambda1 = 0.0,
+      lambda2 = 0.0
     )
   expect_s3_class(out, "baritsu_lr")
   out <-
     linear_regression(
       rec,
       data = NULL,
-      mixture = 0.5
+      lambda1 = 0.5,
+      lambda2 = 0.0
     )
   expect_s3_class(out, "baritsu_lr")
   testdat <- rec |>
@@ -49,14 +58,16 @@ test_that("linear_reg works for x-y interface", {
     linear_regression(
       x = ames_train[, 2:4],
       y = ames_train[, 1],
-      mixture = 0.0
+      lambda1 = 0.0,
+      lambda2 = 0.0
     )
   expect_s3_class(out, "baritsu_lr")
   out <-
     linear_regression(
       x = ames_train[, 2:4],
       y = ames_train[, 1],
-      mixture = 0.5
+      lambda1 = 0.5,
+      lambda2 = 0.0
     )
   expect_s3_class(out, "baritsu_lr")
 })
@@ -66,21 +77,24 @@ test_that("linear_reg works for formula interface", {
     linear_regression(
       log(Sale_Price) ~ .,
       data = ames_train,
-      mixture = 0.0
+      lambda1 = 0.0,
+      lambda2 = 0.0
     )
   expect_s3_class(out, "baritsu_lr")
   out <-
     linear_regression(
       log(Sale_Price) ~ .,
       data = ames_train,
-      mixture = 0.5
+      lambda1 = 0.5,
+      lambda2 = 0.0
     )
   expect_s3_class(out, "baritsu_lr")
 })
 
 test_that("linear_reg works with tidymodels", {
-  spec <- parsnip::linear_reg(
-    mixture = 0.0
+  spec <- lars(
+    lambda1 = 0.0,
+    lambda2 = 0.5
   ) |>
     parsnip::set_engine("baritsu") |>
     parsnip::set_mode("regression")

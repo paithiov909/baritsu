@@ -7,7 +7,8 @@
 linear_regression(
   formula = NULL,
   data = NULL,
-  mixture = 1,
+  lambda1 = 0,
+  lambda2 = 0,
   no_intercept = FALSE,
   no_normalize = FALSE,
   use_cholesky = FALSE,
@@ -22,9 +23,9 @@ If a recipe is passed, \code{data} is ignored.}
 
 \item{data}{A data.frame.}
 
-\item{mixture}{Regularization parameter within \verb{[0, 1]} (default: 1.0)
-This value will be passed to lambda1 (for L1-norm penalty) as is,
-and \code{1.0 - mixture} will be passed to lambda2 (for L2-norm penalty).}
+\item{lambda1}{Regularization parameter for L1-norm penalty.}
+
+\item{lambda2}{Regularization parameter for L2-norm penalty.}
 
 \item{no_intercept}{Logical; passed to \code{\link[mlpack:lars]{mlpack::lars()}}.}
 
@@ -44,7 +45,7 @@ A wrapper around \code{\link[mlpack:linear_regression]{mlpack::linear_regression
 that allows passing a formula.
 }
 \details{
-When the mixture is 0, this function
+When the lambda1 is 0, this function
 fallbacks to \code{\link[mlpack:linear_regression]{mlpack::linear_regression()}} for performance.
 }
 \seealso{
