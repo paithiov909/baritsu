@@ -24,7 +24,7 @@
 #' @param lambda1 Regularization parameter for L1-norm penalty.
 #' @param lambda2 Regularization parameter for L2-norm penalty.
 #' @rdname details_lars_baritsu
-#' @aliases lars
+#' @aliases details_lars_baritsu
 #' @export
 lars <- function(
   mode = "regression",
@@ -52,7 +52,6 @@ lars <- function(
   )
 }
 
-#' @rdname details_lars_baritsu
 #' @method update lars
 #' @export
 update.lars <- function(

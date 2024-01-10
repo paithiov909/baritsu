@@ -2,19 +2,10 @@
 % Please edit documentation in R/lars-baritsu.R
 \name{lars}
 \alias{lars}
-\alias{update.lars}
+\alias{details_lars_baritsu}
 \title{Least angle regression}
 \usage{
 lars(mode = "regression", engine = "baritsu", lambda1 = NULL, lambda2 = NULL)
-
-\method{update}{lars}(
-  object,
-  parameters = NULL,
-  lambda1 = NULL,
-  lambda2 = NULL,
-  fresh = FALSE,
-  ...
-)
 }
 \arguments{
 \item{mode}{A single character string for the type of model.
