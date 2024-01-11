@@ -1,1 +1,2 @@
-# TODO: dbscan, hoeffding tree, kmeans, mean_shift
+# TODO: dbscan, kmeans, mean_shift
+# TODO: define new model for hoeffding tree

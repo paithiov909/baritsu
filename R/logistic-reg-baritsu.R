@@ -1,50 +1,44 @@
-#' L2-regularized support vector machine via baritsu
+#' Logistic regression via baritsu
 #'
-#' [mlpack::linear_svm()] is an implementation of
-#' linear SVM for multiclass classification.
+#' [mlpack::logistic_regression()] is an implementation of
+#' L2-regularized logistic regression for two-class classification.
 #'
 #' @details
 #' For this engine, there is a single mode: classification
 #'
 #' ## Tuning Parameters
 #'
-#' This engine has 1 tuning parameter:
+#' This model has 1 tuning parameter:
 #'
-#' - `margin`: Insensitivity Margin (type: double)
+#' - `penalty`: Amount of regularization (type: double)
 #'
-#' ## Preprocessing requirements
-#'
-#' Predictors should be centered and scaled.
-#' One way to achieve this is to center and scale each
-#' so that each predictor has mean zero and a variance of one.
-#'
-#' @name details_svm_linear_baritsu
+#' @name details_logistic_reg_baritsu
 #' @keywords internal
 NULL
 
-register_svm_linear_baritsu <- function() {
-  parsnip::set_model_engine("svm_linear", "classification", "baritsu")
+register_logistic_reg_baritsu <- function() {
+  parsnip::set_model_engine("logistic_reg", "classification", "baritsu")
   parsnip::set_fit(
-    model = "svm_linear",
+    model = "logistic_reg",
     eng = "baritsu",
     mode = "classification",
     value = list(
       interface = "formula",
       protect = c("formula", "data", "x", "y"),
-      func = c(pkg = "baritsu", fun = "linear_svm"),
-      defaults = list(seed = rlang::expr(sample.int(10 ^ 5, 1)))
+      func = c(pkg = "baritsu", fun = "logistic_regression"),
+      defaults = list()
     )
   )
   parsnip::set_model_arg(
-    model = "svm_linear",
+    model = "logistic_reg",
     eng = "baritsu",
-    parsnip = "margin",
-    original = "margin",
-    func = list(pkg = "dials", fun = "margin"),
+    parsnip = "penalty",
+    original = "penalty",
+    func = list(pkg = "dials", fun = "penalty"),
     has_submodel = FALSE
   )
   parsnip::set_encoding(
-    model = "svm_linear",
+    model = "logistic_reg",
     eng = "baritsu",
     mode = "classification",
     options = list(
@@ -55,7 +49,7 @@ register_svm_linear_baritsu <- function() {
     )
   )
   parsnip::set_pred(
-    model = "svm_linear",
+    model = "logistic_reg",
     eng = "baritsu",
     mode = "classification",
     type = "class",
@@ -72,7 +66,7 @@ register_svm_linear_baritsu <- function() {
     )
   )
   parsnip::set_pred(
-    model = "svm_linear",
+    model = "logistic_reg",
     eng = "baritsu",
     mode = "classification",
     type = "prob",
@@ -88,5 +82,5 @@ register_svm_linear_baritsu <- function() {
         )
     )
   )
-  parsnip::set_dependency("svm_linear", "baritsu", "baritsu")
+  parsnip::set_dependency("logistic_reg", eng = "baritsu", pkg = "baritsu")
 }

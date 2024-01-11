@@ -4,6 +4,7 @@
 #' baritsu has the following parsnip engines:
 #'
 #' - [details_decision_tree_baritsu]
+#' - [details_logistic_reg_baritsu]
 #' - [details_mlp_baritsu]
 #' - [details_multinom_reg_baritsu]
 #' - [details_naive_Bayes_baritsu]

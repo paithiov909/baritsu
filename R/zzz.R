@@ -2,6 +2,7 @@
 .onLoad <- function(libname, pkgname) {
   register_decision_tree_baritsu()
   register_lars_baritsu()
+  register_logistic_reg_baritsu()
   register_mlp_baritsu()
   register_multinom_reg_baritsu()
   register_naive_Bayes_baritsu()

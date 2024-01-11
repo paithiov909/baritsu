@@ -138,8 +138,8 @@ register_lars_baritsu <- function() {
     mode = "regression",
     options = list(
       predictor_indicators = "traditional",
-      compute_intercept = FALSE,
-      remove_intercept = FALSE,
+      compute_intercept = TRUE,
+      remove_intercept = TRUE,
       allow_sparse_x = FALSE
     )
   )

@@ -8,8 +8,7 @@ rec <-
   recipes::recipe(
     Sale_Price ~ .,
     data = ames_train
-  ) |>
-  recipes::step_scale(recipes::all_numeric_predictors())
+  )
 
 test_that("linear_reg warns when lambda is not within [0, 1]", {
   expect_warning(
@@ -23,7 +22,7 @@ test_that("linear_reg warns when lambda is not within [0, 1]", {
     linear_regression(
       Sale_Price ~ .,
       data = ames_train,
-      lambda2 = -1
+      lambda2 = Inf
     )
   )
 })
@@ -31,16 +30,16 @@ test_that("linear_reg warns when lambda is not within [0, 1]", {
 test_that("linear_reg works for x-y interface", {
   out <-
     linear_regression(
-      x = ames_train[, 2:4],
-      y = ames_train[, 1],
+      x = dplyr::select(ames_train, !"Sale_Price"),
+      y = dplyr::select(ames_train,  "Sale_Price"),
       lambda1 = 0.0,
       lambda2 = 0.0
     )
   expect_s3_class(out, "baritsu_lr")
   out <-
     linear_regression(
-      x = ames_train[, 2:4],
-      y = ames_train[, 1],
+      x = dplyr::select(ames_train, !"Sale_Price"),
+      y = dplyr::select(ames_train,  "Sale_Price"),
       lambda1 = 0.5,
       lambda2 = 0.0
     )

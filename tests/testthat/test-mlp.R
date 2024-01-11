@@ -43,8 +43,8 @@ test_that("perceptron works for x-y interface", {
     recipes::prep() |>
     recipes::bake(new_data = NULL)
   out <- perceptron(
-    x = dat[, 3:6],
-    y = dat[, "species"]
+    x = dplyr::select(dat, !"species"),
+    y = dplyr::select(dat,  "species")
   )
   expect_s3_class(out, "baritsu_prc")
 })

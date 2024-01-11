@@ -8,8 +8,7 @@ rec <-
     data = penguins_train
   ) |>
   recipes::step_impute_median(recipes::all_numeric_predictors()) |>
-  recipes::step_impute_mode(recipes::all_nominal_predictors()) |>
-  recipes::step_scale(recipes::all_numeric_predictors())
+  recipes::step_impute_mode(recipes::all_nominal_predictors())
 
 test_that("softmax_regression fails when data contains NAs", {
   expect_error(
@@ -44,8 +43,8 @@ test_that("softmax_regression works for x-y interface", {
     recipes::prep() |>
     recipes::bake(new_data = NULL)
   out <- softmax_regression(
-    x = dat[, 3:6],
-    y = dat[, "species"]
+    x = dplyr::select(dat, !"species"),
+    y = dplyr::select(dat,  "species")
   )
   expect_s3_class(out, "baritsu_sr")
 })

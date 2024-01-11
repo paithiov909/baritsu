@@ -1,68 +1,62 @@
-penguins <- modeldata::penguins
-data_split <- rsample::initial_split(penguins, strata = "species")
+penguins <- modeldata::penguins |>
+  stats::na.omit()
+data_split <- rsample::initial_split(penguins, strata = "sex")
 penguins_train <- rsample::training(data_split)
 penguins_test <- rsample::testing(data_split)
 rec <-
   recipes::recipe(
-    species ~ .,
+    sex ~ bill_length_mm + bill_depth_mm + flipper_length_mm + body_mass_g,
     data = penguins_train
   ) |>
-  recipes::step_impute_median(recipes::all_numeric_predictors()) |>
-  recipes::step_impute_mode(recipes::all_nominal_predictors())
+  recipes::step_impute_median(recipes::all_numeric_predictors())
 
-test_that("naive_bayes fails when data contains NAs", {
+test_that("logistic_reg fails when data contains NAs", {
   expect_error(
-    naive_bayes(
-      species ~ .,
-      data = penguins
+    linear_svm(
+      sex ~ .,
+      data = modeldata::penguins
     )
   )
 })
 
-test_that("naive_bayes fails or warns when response is invalid", {
+test_that("logistic_reg fails when response is invalid", {
   testdat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = penguins_test)
   expect_error(
-    naive_bayes(
-      species ~ .,
+    linear_svm(
+      sex ~ .,
       data = testdat |>
-        dplyr::mutate(species = as.numeric(species))
-    )
-  )
-  expect_warning(
-    naive_bayes(
-      species + sex ~ .,
-      data = testdat
+        dplyr::mutate(sex = as.numeric(sex))
     )
   )
 })
 
-test_that("naive_bayes works for x-y interface", {
+test_that("logistic_reg works for x-y interface", {
   dat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = NULL)
-  out <- naive_bayes(
-    x = dplyr::select(dat, !"species"),
-    y = dplyr::select(dat,  "species")
+  out <- logistic_regression(
+    x = dplyr::select(dat, !"sex"),
+    y = dplyr::select(dat,  "sex")
   )
-  expect_s3_class(out, "baritsu_nbc")
+  expect_s3_class(out, "baritsu_lgr")
 })
 
-test_that("naive_bayes works for formula interface", {
+test_that("logistic_reg works for formula interface", {
   dat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = NULL)
-  out <- naive_bayes(
-    species ~ .,
+  out <- logistic_regression(
+    sex ~ .,
     data = dat
   )
-  expect_s3_class(out, "baritsu_nbc")
+  expect_s3_class(out, "baritsu_lgr")
 })
 
-test_that("naive_bayes works with tidymodels", {
-  spec <- parsnip::naive_Bayes(
-    # this engine has no tuning parameters
+test_that("logistic_reg works with tidymodels", {
+  spec <- parsnip::logistic_reg(
+    penalty = 0.1
   ) |>
     parsnip::set_engine("baritsu") |>
     parsnip::set_mode("classification")
@@ -74,7 +68,7 @@ test_that("naive_bayes works with tidymodels", {
     recipes::bake(new_data = penguins_test)
 
   out <- spec |>
-    parsnip::fit(species ~ ., data = dat)
+    parsnip::fit(sex ~ ., data = dat)
   expect_true(inherits(out, "model_fit"))
   expect_s3_class(
     predict(workflows::extract_fit_engine(out), testdat, type = "class"),

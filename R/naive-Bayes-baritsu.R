@@ -32,7 +32,7 @@ register_naive_Bayes_baritsu <- function() { # nolint
     eng = "baritsu",
     mode = "classification",
     options = list(
-      predictor_indicators = "traditional",
+      predictor_indicators = "none",
       compute_intercept = FALSE,
       remove_intercept = FALSE,
       allow_sparse_x = FALSE

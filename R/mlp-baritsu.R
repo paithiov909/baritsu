@@ -43,8 +43,8 @@ register_mlp_baritsu <- function() {
     mode = "classification",
     options = list(
       predictor_indicators = "traditional",
-      compute_intercept = FALSE,
-      remove_intercept = FALSE,
+      compute_intercept = TRUE,
+      remove_intercept = TRUE,
       allow_sparse_x = FALSE
     )
   )
