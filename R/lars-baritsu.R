@@ -2,7 +2,7 @@
 #'
 #' @description
 #' `lars()` defines a model that can predict numeric values from
-#' predictors using a wrapper of [mlpack::lars()].
+#' predictors using [linear_regression()], a wrapper of [mlpack::lars()].
 #'
 #' [mlpack::lars()] is an implementation of Least Angle Regression
 #' (Stagewise/laSso), also known as LARS.
@@ -14,8 +14,8 @@
 #'
 #' This model has 2 tuning parameters:
 #'
-#' - `lambda1` Amount of regularization for Lasso Penalty (type: double)
-#' - `lambda2` Amount of regularization for Ridge Penalty (type: double)
+#' - `penalty_L1` Amount of regularization for Lasso Penalty (type: double)
+#' - `penalty_L2` Amount of regularization for Ridge Penalty (type: double)
 #'
 #' @param mode A single character string for the type of model.
 #' The only possible value for this model is "regression".
@@ -118,8 +118,7 @@ register_lars_baritsu <- function() {
     parsnip = "penalty_L1",
     original = "lambda1",
     func = list(
-      pkg = "dials", fun = "penalty_L1",
-      range = c(0, 1), trans = NULL
+      pkg = "dials", fun = "penalty_L1"
     ),
     has_submodel = FALSE
   )
@@ -129,8 +128,7 @@ register_lars_baritsu <- function() {
     parsnip = "penalty_L2",
     original = "lambda2",
     func = list(
-      pkg = "dials", fun = "penalty_L2",
-      range = c(0, 1), trans = NULL
+      pkg = "dials", fun = "penalty_L2"
     ),
     has_submodel = FALSE
   )

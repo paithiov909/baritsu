@@ -38,20 +38,6 @@ test_that("decision_trees fails or warns when response is invalid", {
   )
 })
 
-test_that("decision_trees works for recipe", {
-  out <- decision_trees(
-    rec,
-    data = NULL
-  )
-  expect_s3_class(out, "baritsu_dt")
-  testdat <- rec |>
-    recipes::prep() |>
-    recipes::bake(new_data = penguins_test)
-  pred <- predict(out, testdat)
-  expect_s3_class(pred, "tbl_df")
-  expect_equal(colnames(pred), c(".pred_class", ".probabilities"))
-})
-
 test_that("decision_trees works for x-y interface", {
   dat <- rec |>
     recipes::prep() |>

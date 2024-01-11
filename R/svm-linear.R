@@ -5,8 +5,6 @@
 #' @seealso [mlpack::linear_svm()] [predict.baritsu_svm()]
 #'
 #' @param formula A formula.
-#' Alternatively, a recipe object can be passed for this argument.
-#' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param margin Margin of difference between correct class and other classes.
 #' @param penalty L2-regularization constant.
@@ -15,9 +13,9 @@
 #' @param tolerance Convergence tolerance for optimizer.
 #' @param optimizer Optimizer to use for training ("lbfgs" or "psgd").
 #' @param epochs Maximum number of full epochs over dataset for parallel SGD.
-#' @param shuffle Logical; if true, doesn't shuffle the order
+#' @param learn_rate Step size for parallel SGD optimizer.
 #' in which data points are visited for parallel SGD.
-#' @param step_size Step size for parallel SGD optimizer.
+#' @param shuffle Logical; if true, doesn't shuffle the order
 #' @param seed Random seed. If 0, `std::time(NULL)` is used internally.
 #' @param x Design matrix.
 #' @param y Response matrix.
@@ -27,14 +25,14 @@ linear_svm <- function(
   formula = NULL,
   data = NULL,
   margin = 1.0, # delta
-  penalty = 1.0, # lambda
+  penalty = 0.0001, # lambda
   stop_iter = 1000, # max_iterations
   no_intercept = FALSE,
   tolerance = 1e-10,
   optimizer = c("lbfgs", "psgd"),
-  epochs = 50,
+  epochs = 50, # epochs
+  learn_rate = 0.01, # step_size
   shuffle = FALSE,
-  step_size = 0.01,
   seed = 0,
   x = NULL,
   y = NULL
@@ -47,8 +45,8 @@ linear_svm <- function(
       "outcomes consist of more than one column. verify LHS of formula."
     )
   }
-  check_predictors(data$predictors)
   check_outcomes(data$outcomes)
+  check_predictors(data$predictors)
 
   svm_model <-
     mlpack::linear_svm(
@@ -62,7 +60,7 @@ linear_svm <- function(
       optimizer = optimizer,
       epochs = epochs,
       shuffle = shuffle,
-      step_size = step_size,
+      step_size = learn_rate,
       seed = seed,
       num_classes = nlevels(data$outcomes[[1]])
     )

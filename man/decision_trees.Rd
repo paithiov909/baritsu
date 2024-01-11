@@ -16,9 +16,7 @@ decision_trees(
 )
 }
 \arguments{
-\item{formula}{A formula.
-Alternatively, a recipe object can be passed for this argument.
-If a recipe is passed, \code{data} is ignored.}
+\item{formula}{A formula.}
 
 \item{data}{A data.frame.}
 

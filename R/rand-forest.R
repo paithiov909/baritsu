@@ -5,8 +5,6 @@
 #' @seealso [mlpack::random_forest()] [predict.baritsu_rf()]
 #'
 #' @param formula A formula.
-#' Alternatively, a recipe object can be passed for this argument.
-#' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param mtry Subspace dimension.
 #' If 0, autoselects the square root of data dimensionality.
@@ -32,8 +30,8 @@ random_forest <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  check_predictors(data$predictors)
   check_outcomes(data$outcomes)
+  check_predictors(data$predictors)
 
   rf_model <-
     mlpack::random_forest(

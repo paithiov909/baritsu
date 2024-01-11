@@ -35,7 +35,7 @@ all_factors <- function(data) {
   all(unlist(lapply(data, is.factor)))
 }
 
-#' Stop if outcome are not factors
+#' Stop if outcomes are not factors or contain NAs
 #' @noRd
 check_outcomes <- function(outcomes) {
   if (ncol(outcomes) > 1) {
@@ -45,6 +45,9 @@ check_outcomes <- function(outcomes) {
   }
   if (!all_factors(outcomes)) {
     rlang::abort("outcomes must be factors.")
+  }
+  if (!all_finite(outcomes)) {
+    rlang::abort("outcomes can't contain any NAs.")
   }
   return(invisible(FALSE))
 }
@@ -64,12 +67,7 @@ is_exptr_of <- function(object, type) {
 }
 
 mold <- function(formula, data, x, y) {
-  if (!is.null(formula)) {
-    if (inherits(formula, "recipe")) {
-      data <- formula |>
-        recipes::prep() |>
-        recipes::bake(new_data = NULL)
-    }
+  if (rlang::is_formula(formula, scoped = TRUE)) {
     hardhat::mold(formula, data)
   } else if (!is.null(x) && !is.null(y)) {
     hardhat::mold(x, y)

@@ -25,7 +25,7 @@ to use for fitting.}
 }
 \description{
 \code{lars()} defines a model that can predict numeric values from
-predictors using a wrapper of \code{\link[mlpack:lars]{mlpack::lars()}}.
+predictors using \code{\link[=linear_regression]{linear_regression()}}, a wrapper of \code{\link[mlpack:lars]{mlpack::lars()}}.
 
 \code{\link[mlpack:lars]{mlpack::lars()}} is an implementation of Least Angle Regression
 (Stagewise/laSso), also known as LARS.
@@ -36,8 +36,8 @@ For this model, there is a single mode: regression
 
 This model has 2 tuning parameters:
 \itemize{
-\item \code{lambda1} Amount of regularization for Lasso Penalty (type: double)
-\item \code{lambda2} Amount of regularization for Ridge Penalty (type: double)
+\item \code{penalty_L1} Amount of regularization for Lasso Penalty (type: double)
+\item \code{penalty_L2} Amount of regularization for Ridge Penalty (type: double)
 }
 }
 }

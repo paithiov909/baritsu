@@ -11,8 +11,6 @@
 #' [predict.baritsu_lr()]
 #'
 #' @param formula A formula.
-#' Alternatively, a recipe object can be passed for this argument.
-#' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param lambda1 Regularization parameter for L1-norm penalty.
 #' @param lambda2 Regularization parameter for L2-norm penalty.
@@ -35,7 +33,11 @@ linear_regression <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  # NA check is not necessary.
+  if (!all_finite(data$outcomes)) {
+    rlang::abort("outcomes can contain finite numerics only.")
+  }
+  check_predictors(data$predictors)
+
   if (lambda1 < 0 || lambda1 > 1) {
     rlang::warn("lambda1 should be a number between 0 and 1; set to 0.")
     lambda1 <- 0.0
@@ -44,7 +46,6 @@ linear_regression <- function(
     rlang::warn("lambda2 should be a number between 0 and 1; set to 0.")
     lambda2 <- 0.0
   }
-
   # `lambda1=0` corresponds to a pure ridge regression
   if (lambda1 == 0.0) {
     lr_model <-
@@ -82,6 +83,8 @@ predict.baritsu_lr <- function(object, newdata, ...) {
       newdata,
       blueprint = object$blueprint
     )
+  check_predictors(newdata$predictors)
+
   if (is_exptr_of(object, "LinearRegression")) {
     pred <-
       mlpack::linear_regression(

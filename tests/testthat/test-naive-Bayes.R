@@ -38,20 +38,6 @@ test_that("naive_bayes fails or warns when response is invalid", {
   )
 })
 
-test_that("naive_bayes works for recipe", {
-  out <- naive_bayes(
-    rec,
-    data = NULL
-  )
-  expect_s3_class(out, "baritsu_nbc")
-  testdat <- rec |>
-    recipes::prep() |>
-    recipes::bake(new_data = penguins_test)
-  pred <- predict(out, testdat)
-  expect_s3_class(pred, "tbl_df")
-  expect_equal(colnames(pred), c(".pred_class", ".probabilities"))
-})
-
 test_that("naive_bayes works for x-y interface", {
   dat <- rec |>
     recipes::prep() |>

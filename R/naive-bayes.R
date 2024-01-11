@@ -5,8 +5,6 @@
 #' @seealso [mlpack::nbc()] [predict.baritsu_nbc()]
 #'
 #' @param formula A formula.
-#' Alternatively, a recipe object can be passed for this argument.
-#' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param incremental_variance Logical; passed to [mlpack::nbc()].
 #' @param x Design matrix.
@@ -21,8 +19,8 @@ naive_bayes <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  check_predictors(data$predictors)
   check_outcomes(data$outcomes)
+  check_predictors(data$predictors)
 
   nbc_model <-
     mlpack::nbc(

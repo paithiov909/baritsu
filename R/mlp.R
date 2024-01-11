@@ -6,8 +6,6 @@
 #' @seealso [mlpack::perceptron()] [predict.baritsu_prc()]
 #'
 #' @param formula A formula.
-#' Alternatively, a recipe object can be passed for this argument.
-#' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param epochs Maximum number of iterations.
 #' @param x Design matrix.
@@ -28,8 +26,8 @@ perceptron <- function(
       "outcomes consist of more than one column. verify LHS of formula."
     )
   }
-  check_predictors(data$predictors)
   check_outcomes(data$outcomes)
+  check_predictors(data$predictors)
 
   prc_model <-
     mlpack::perceptron(

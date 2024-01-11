@@ -39,20 +39,6 @@ test_that("softmax_regression fails when response is invalid", {
   )
 })
 
-test_that("softmax_regression works for recipe", {
-  out <- softmax_regression(
-    rec,
-    data = NULL
-  )
-  expect_s3_class(out, "baritsu_sr")
-  testdat <- rec |>
-    recipes::prep() |>
-    recipes::bake(new_data = penguins_test)
-  pred <- predict(out, testdat)
-  expect_s3_class(pred, "tbl_df")
-  expect_equal(colnames(pred), c(".pred_class", ".probabilities"))
-})
-
 test_that("softmax_regression works for x-y interface", {
   dat <- rec |>
     recipes::prep() |>

@@ -32,7 +32,7 @@ register_svm_linear_baritsu <- function() {
       interface = "formula",
       protect = c("formula", "data", "x", "y"),
       func = c(pkg = "baritsu", fun = "linear_svm"),
-      defaults = list()
+      defaults = list(seed = rlang::expr(sample.int(10 ^ 5, 1)))
     )
   )
   parsnip::set_model_arg(

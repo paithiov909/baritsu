@@ -6,8 +6,6 @@
 #' @seealso [mlpack::softmax_regression()] [predict.baritsu_sr()]
 #'
 #' @param formula A formula.
-#' Alternatively, a recipe object can be passed for this argument.
-#' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param penalty L2-regularization constant.
 #' @param stop_iter Maximum number of iterations.
@@ -32,8 +30,8 @@ softmax_regression <- function(
       "outcomes consist of more than one column. verify LHS of formula."
     )
   }
-  check_predictors(data$predictors)
   check_outcomes(data$outcomes)
+  check_predictors(data$predictors)
 
   sr_model <-
     mlpack::softmax_regression(

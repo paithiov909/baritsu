@@ -38,20 +38,6 @@ test_that("random_forest fails or warns when response is invalid", {
   )
 })
 
-test_that("random_forest works for recipe", {
-  out <- random_forest(
-    rec,
-    data = NULL
-  )
-  expect_s3_class(out, "baritsu_rf")
-  testdat <- rec |>
-    recipes::prep() |>
-    recipes::bake(new_data = penguins_test)
-  pred <- predict(out, testdat)
-  expect_s3_class(pred, "tbl_df")
-  expect_equal(colnames(pred), c(".pred_class", ".probabilities"))
-})
-
 test_that("random_forest works for x-y interface", {
   dat <- rec |>
     recipes::prep() |>

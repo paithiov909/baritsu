@@ -6,8 +6,6 @@
 #' @seealso [mlpack::bayesian_linear_regression()] [predict.baritsu_blr()]
 #'
 #' @param formula A formula.
-#' Alternatively, a recipe object can be passed for this argument.
-#' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param center Logical;
 #' if enabled, centers the data and fits the intercept.
@@ -26,7 +24,11 @@ linear_regression_bayesian <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  # NA check is not necessary.
+  if (!all_finite(data$outcomes)) {
+    rlang::abort("outcomes can contain finite numerics only.")
+  }
+  check_predictors(data$predictors)
+
   blr_model <-
     mlpack::bayesian_linear_regression(
       input = data$predictors,
@@ -54,6 +56,7 @@ predict.baritsu_blr <- function(object, newdata, ...) {
       newdata,
       blueprint = object$blueprint
     )
+  check_predictors(newdata$predictors)
   pred <-
     mlpack::bayesian_linear_regression(
       input_model = object$fit,

@@ -39,20 +39,6 @@ test_that("linear_svm fails when response is invalid", {
   )
 })
 
-test_that("linear_svm works for recipe", {
-  out <- linear_svm(
-    rec,
-    data = NULL
-  )
-  expect_s3_class(out, "baritsu_svm")
-  testdat <- rec |>
-    recipes::prep() |>
-    recipes::bake(new_data = penguins_test)
-  pred <- predict(out, testdat)
-  expect_s3_class(pred, "tbl_df")
-  expect_equal(colnames(pred), c(".pred_class", ".probabilities"))
-})
-
 test_that("linear_svm works for x-y interface", {
   dat <- rec |>
     recipes::prep() |>

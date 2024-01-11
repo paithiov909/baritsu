@@ -28,31 +28,6 @@ test_that("linear_reg warns when lambda is not within [0, 1]", {
   )
 })
 
-test_that("linear_reg works for recipes", {
-  out <-
-    linear_regression(
-      rec,
-      data = NULL,
-      lambda1 = 0.0,
-      lambda2 = 0.0
-    )
-  expect_s3_class(out, "baritsu_lr")
-  out <-
-    linear_regression(
-      rec,
-      data = NULL,
-      lambda1 = 0.5,
-      lambda2 = 0.0
-    )
-  expect_s3_class(out, "baritsu_lr")
-  testdat <- rec |>
-    recipes::prep() |>
-    recipes::bake(new_data = ames_test)
-  pred <- predict(out, testdat)
-  expect_s3_class(pred, "tbl_df")
-  expect_equal(colnames(pred), c(".pred"))
-})
-
 test_that("linear_reg works for x-y interface", {
   out <-
     linear_regression(

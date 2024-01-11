@@ -8,23 +8,21 @@ linear_svm(
   formula = NULL,
   data = NULL,
   margin = 1,
-  penalty = 1,
+  penalty = 1e-04,
   stop_iter = 1000,
   no_intercept = FALSE,
   tolerance = 1e-10,
   optimizer = c("lbfgs", "psgd"),
   epochs = 50,
+  learn_rate = 0.01,
   shuffle = FALSE,
-  step_size = 0.01,
   seed = 0,
   x = NULL,
   y = NULL
 )
 }
 \arguments{
-\item{formula}{A formula.
-Alternatively, a recipe object can be passed for this argument.
-If a recipe is passed, \code{data} is ignored.}
+\item{formula}{A formula.}
 
 \item{data}{A data.frame.}
 
@@ -42,10 +40,10 @@ If a recipe is passed, \code{data} is ignored.}
 
 \item{epochs}{Maximum number of full epochs over dataset for parallel SGD.}
 
-\item{shuffle}{Logical; if true, doesn't shuffle the order
+\item{learn_rate}{Step size for parallel SGD optimizer.
 in which data points are visited for parallel SGD.}
 
-\item{step_size}{Step size for parallel SGD optimizer.}
+\item{shuffle}{Logical; if true, doesn't shuffle the order}
 
 \item{seed}{Random seed. If 0, \code{std::time(NULL)} is used internally.}
 

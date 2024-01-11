@@ -9,8 +9,6 @@
 #' @seealso [mlpack::decision_tree()] [predict.baritsu_dt()]
 #'
 #' @param formula A formula.
-#' Alternatively, a recipe object can be passed for this argument.
-#' If a recipe is passed, \code{data} is ignored.
 #' @param data A data.frame.
 #' @param tree_depth Maximum depth of the tree.
 #' @param min_n Minimum number of data points in a leaf.
@@ -31,8 +29,8 @@ decision_trees <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  check_predictors(data$predictors)
   check_outcomes(data$outcomes)
+  check_predictors(data$predictors)
 
   if (is.null(weights)) {
     weights <- tibble::tibble(
