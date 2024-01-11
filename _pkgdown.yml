@@ -6,6 +6,7 @@ reference:
     contents:
       - decision_trees
       - linear_svm
+      - logistic_regression
       - naive_bayes
       - perceptron
       - random_forest
