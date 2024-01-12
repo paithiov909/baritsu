@@ -40,7 +40,7 @@ register_svm_linear_baritsu <- function() {
     eng = "baritsu",
     parsnip = "margin",
     original = "margin",
-    func = list(pkg = "dials", fun = "margin"),
+    func = list(pkg = "dials", fun = "svm_margin"),
     has_submodel = FALSE
   )
   parsnip::set_encoding(

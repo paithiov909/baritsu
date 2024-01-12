@@ -76,19 +76,7 @@ update.hoeffding_tree <- function(
 
 #' @export
 tunable.hoeffding_tree <- function(x, ...) {
-  tibble::tibble(
-    name = c(
-      "confidence_factor",
-      "sample_size"
-    ),
-    call_info = list(
-      list(pkg = "dials", fun = "confidence_factor"),
-      list(pkg = "dials", fun = "sample_size")
-    ),
-    source = "model_spec",
-    component = "hoeffding_tree",
-    component_id = "main"
-  )
+  NextMethod()
 }
 
 register_hoeffding_tree_baritsu <- function() { # nolint

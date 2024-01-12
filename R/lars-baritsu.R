@@ -81,19 +81,7 @@ update.lars <- function(
 
 #' @export
 tunable.lars <- function(x, ...) {
-  tibble::tibble(
-    name = c(
-      "penalty_L1",
-      "penalty_L2"
-    ),
-    call_info = list(
-      list(pkg = "dials", fun = "penalty_L1", range = c(-10, 0)),
-      list(pkg = "dials", fun = "penalty_L2", range = c(-10, 0))
-    ),
-    source = "model_spec",
-    component = "lars",
-    component_id = "main"
-  )
+  NextMethod()
 }
 
 register_lars_baritsu <- function() {
@@ -121,7 +109,7 @@ register_lars_baritsu <- function() {
     parsnip = "penalty_L1",
     original = "lambda1",
     func = list(
-      pkg = "dials", fun = "penalty_L1"
+      pkg = "dials", fun = "penalty_L1", range = c(-10, 0)
     ),
     has_submodel = FALSE
   )
@@ -131,7 +119,7 @@ register_lars_baritsu <- function() {
     parsnip = "penalty_L2",
     original = "lambda2",
     func = list(
-      pkg = "dials", fun = "penalty_L2"
+      pkg = "dials", fun = "penalty_L2", range = c(-10, 0)
     ),
     has_submodel = FALSE
   )
