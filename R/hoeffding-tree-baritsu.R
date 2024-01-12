@@ -24,6 +24,7 @@
 #' @rdname details_hoeffding_tree_baritsu
 #' @aliases details_hoeffding_tree_baritsu
 #' @export
+#' @keywords internal
 hoeffding_tree <- function(
   mode = "classification",
   engine = "baritsu",

@@ -1,8 +1,11 @@
 Breiman
+Gini
+Hoeffding
 SGD
 Softmax
 Stagewise
 autoselects
+domingos
 fallbacks
 laSso
 lbfgs
@@ -10,5 +13,6 @@ mlpack
 multiclass
 perceptron
 psgd
+sgd
 softmax
 tibble

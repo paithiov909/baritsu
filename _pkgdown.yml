@@ -5,6 +5,7 @@ reference:
   - title: Classification
     contents:
       - decision_trees
+      - hoeffding_trees
       - linear_svm
       - logistic_regression
       - naive_bayes
@@ -15,7 +16,6 @@ reference:
     contents:
       - linear_regression
       - linear_regression_bayesian
-      - lars
   - title: Prediction
     contents:
       - predict.baritsu

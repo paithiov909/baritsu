@@ -28,6 +28,7 @@
 #' @rdname details_lars_baritsu
 #' @aliases details_lars_baritsu
 #' @export
+#' @keywords internal
 lars <- function(
   mode = "regression",
   engine = "baritsu",

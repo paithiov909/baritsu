@@ -40,3 +40,4 @@ This model has 2 tuning parameters:
 \seealso{
 \code{\link[=hoeffding_trees]{hoeffding_trees()}}
 }
+\keyword{internal}
