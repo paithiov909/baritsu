@@ -39,7 +39,7 @@ all_factors <- function(data) {
 #' @noRd
 check_outcomes <- function(outcomes) {
   if (ncol(outcomes) > 1) {
-    rlang::warn(
+    rlang::abort(
       "outcomes consist of more than one column. verify LHS of formula."
     )
   }

@@ -9,11 +9,11 @@ linear_svm(
   data = NULL,
   margin = 1,
   penalty = 1e-04,
-  stop_iter = 1000,
+  epochs = 1000,
   no_intercept = FALSE,
   tolerance = 1e-10,
   optimizer = c("lbfgs", "psgd"),
-  epochs = 50,
+  stop_iter = 50,
   learn_rate = 0.01,
   shuffle = FALSE,
   seed = 0,
@@ -30,7 +30,9 @@ linear_svm(
 
 \item{penalty}{L2-regularization constant.}
 
-\item{stop_iter}{Maximum iterations for optimizer (0 indicates no limit).}
+\item{epochs}{Maximum iterations for optimizer (0 indicates no limit).
+This argument is passed as \code{max_iterations}, not as \code{epochs}
+for \code{\link[mlpack:linear_svm]{mlpack::linear_svm()}}.}
 
 \item{no_intercept}{Logical; passed to \code{\link[mlpack:linear_svm]{mlpack::linear_svm()}}.}
 
@@ -38,12 +40,12 @@ linear_svm(
 
 \item{optimizer}{Optimizer to use for training ("lbfgs" or "psgd").}
 
-\item{epochs}{Maximum number of full epochs over dataset for parallel SGD.}
+\item{stop_iter}{Maximum number of full epochs over dataset for parallel SGD.}
 
 \item{learn_rate}{Step size for parallel SGD optimizer.
 in which data points are visited for parallel SGD.}
 
-\item{shuffle}{Logical; if true, doesn't shuffle the order}
+\item{shuffle}{Logical; if true, doesn't shuffle the order.}
 
 \item{seed}{Random seed. If 0, \code{std::time(NULL)} is used internally.}
 

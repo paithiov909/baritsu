@@ -8,7 +8,7 @@ softmax_regression(
   formula = NULL,
   data = NULL,
   penalty = 0.001,
-  stop_iter = 400,
+  epochs = 400,
   no_intercept = FALSE,
   x = NULL,
   y = NULL
@@ -21,7 +21,7 @@ softmax_regression(
 
 \item{penalty}{L2-regularization constant.}
 
-\item{stop_iter}{Maximum number of iterations.}
+\item{epochs}{Maximum number of iterations.}
 
 \item{no_intercept}{Logical; passed to \code{\link[mlpack:softmax_regression]{mlpack::softmax_regression()}}.}
 

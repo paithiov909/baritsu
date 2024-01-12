@@ -8,7 +8,7 @@ logistic_regression(
   formula = NULL,
   data = NULL,
   penalty = 1e-04,
-  stop_iter = 1000,
+  epochs = 1000,
   decision_boundary = 0.5,
   tolerance = 1e-10,
   optimizer = c("lbfgs", "sgd"),
@@ -25,7 +25,7 @@ logistic_regression(
 
 \item{penalty}{L2-regularization constant.}
 
-\item{stop_iter}{Maximum number of iterations.}
+\item{epochs}{Maximum number of iterations.}
 
 \item{decision_boundary}{Decision boundary for prediction;
 if the logistic function for a point is less than the boundary,

@@ -17,6 +17,8 @@
 #' - `penalty_L1` Amount of regularization for Lasso Penalty (type: double)
 #' - `penalty_L2` Amount of regularization for Ridge Penalty (type: double)
 #'
+#' @seealso [linear_regression()]
+#'
 #' @param mode A single character string for the type of model.
 #' The only possible value for this model is "regression".
 #' @param engine A single character string specifying what computational engine

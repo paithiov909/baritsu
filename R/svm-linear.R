@@ -8,14 +8,16 @@
 #' @param data A data.frame.
 #' @param margin Margin of difference between correct class and other classes.
 #' @param penalty L2-regularization constant.
-#' @param stop_iter Maximum iterations for optimizer (0 indicates no limit).
+#' @param epochs Maximum iterations for optimizer (0 indicates no limit).
+#' This argument is passed as `max_iterations`, not as `epochs`
+#' for [mlpack::linear_svm()].
 #' @param no_intercept Logical; passed to [mlpack::linear_svm()].
 #' @param tolerance Convergence tolerance for optimizer.
 #' @param optimizer Optimizer to use for training ("lbfgs" or "psgd").
-#' @param epochs Maximum number of full epochs over dataset for parallel SGD.
+#' @param stop_iter Maximum number of full epochs over dataset for parallel SGD.
 #' @param learn_rate Step size for parallel SGD optimizer.
 #' in which data points are visited for parallel SGD.
-#' @param shuffle Logical; if true, doesn't shuffle the order
+#' @param shuffle Logical; if true, doesn't shuffle the order.
 #' @param seed Random seed. If 0, `std::time(NULL)` is used internally.
 #' @param x Design matrix.
 #' @param y Response matrix.
@@ -26,11 +28,11 @@ linear_svm <- function(
   data = NULL,
   margin = 1.0, # delta
   penalty = 0.0001, # lambda
-  stop_iter = 1000, # max_iterations
+  epochs = 1000, # max_iterations
   no_intercept = FALSE,
   tolerance = 1e-10,
   optimizer = c("lbfgs", "psgd"),
-  epochs = 50, # epochs
+  stop_iter = 50, # epochs
   learn_rate = 0.01, # step_size
   shuffle = FALSE,
   seed = 0,
@@ -39,12 +41,6 @@ linear_svm <- function(
 ) {
   optimizer <- rlang::arg_match(optimizer, c("lbfgs", "psgd"))
   data <- mold(formula, data, x, y)
-  if (ncol(data$outcomes) > 1) {
-    # need to make sure outcomes are not multiple.
-    rlang::abort(
-      "outcomes consist of more than one column. verify LHS of formula."
-    )
-  }
   check_outcomes(data$outcomes)
   check_predictors(data$predictors)
 
@@ -54,11 +50,11 @@ linear_svm <- function(
       labels = data$outcomes,
       delta = margin,
       lambda = penalty,
-      max_iterations = stop_iter,
+      max_iterations = epochs,
       no_intercept = no_intercept,
       tolerance = tolerance,
       optimizer = optimizer,
-      epochs = epochs,
+      epochs = stop_iter,
       shuffle = shuffle,
       step_size = learn_rate,
       seed = seed,

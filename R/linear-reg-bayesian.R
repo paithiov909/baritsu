@@ -24,6 +24,11 @@ linear_regression_bayesian <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
+  if (ncol(data$outcomes) > 1) {
+    rlang::abort(
+      "outcomes consist of more than one column. verify LHS of formula."
+    )
+  }
   if (!all_finite(data$outcomes)) {
     rlang::abort("outcomes can contain finite numerics only.")
   }

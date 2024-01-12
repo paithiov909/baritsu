@@ -41,3 +41,6 @@ This model has 2 tuning parameters:
 }
 }
 }
+\seealso{
+\code{\link[=linear_regression]{linear_regression()}}
+}

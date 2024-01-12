@@ -8,7 +8,7 @@
 #' @param formula A formula.
 #' @param data A data.frame.
 #' @param penalty L2-regularization constant.
-#' @param stop_iter Maximum number of iterations.
+#' @param epochs Maximum number of iterations.
 #' @param no_intercept Logical; passed to [mlpack::softmax_regression()].
 #' @param x Design matrix.
 #' @param y Response matrix.
@@ -18,18 +18,12 @@ softmax_regression <- function(
   formula = NULL,
   data = NULL,
   penalty = .001,
-  stop_iter = 400,
+  epochs = 400,
   no_intercept = FALSE,
   x = NULL,
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  if (ncol(data$outcomes) > 1) {
-    # need to make sure outcomes are not multiple.
-    rlang::abort(
-      "outcomes consist of more than one column. verify LHS of formula."
-    )
-  }
   check_outcomes(data$outcomes)
   check_predictors(data$predictors)
 
@@ -38,7 +32,7 @@ softmax_regression <- function(
       training = data$predictors,
       labels = data$outcomes,
       lambda = penalty,
-      max_iterations = stop_iter,
+      max_iterations = epochs,
       no_intercept = no_intercept,
       number_of_classes = nlevels(data$outcomes[[1]])
     )

@@ -8,7 +8,7 @@
 #' @param formula A formula.
 #' @param data A data.frame.
 #' @param penalty L2-regularization constant.
-#' @param stop_iter Maximum number of iterations.
+#' @param epochs Maximum number of iterations.
 #' @param decision_boundary Decision boundary for prediction;
 #' if the logistic function for a point is less than the boundary,
 #' the class is taken to be 0; otherwise, the class is 1.
@@ -24,7 +24,7 @@ logistic_regression <- function(
   formula = NULL,
   data = NULL,
   penalty = 0.0001, # lambda
-  stop_iter = 1000, # max_iterations
+  epochs = 1000, # max_iterations
   decision_boundary = 0.5,
   tolerance = 1e-10,
   optimizer = c("lbfgs", "sgd"),
@@ -35,12 +35,6 @@ logistic_regression <- function(
 ) {
   optimizer <- rlang::arg_match(optimizer, c("lbfgs", "sgd"))
   data <- mold(formula, data, x, y)
-  if (ncol(data$outcomes) > 1) {
-    # need to make sure outcomes are not multiple.
-    rlang::abort(
-      "outcomes consist of more than one column. verify LHS of formula."
-    )
-  }
   check_outcomes(data$outcomes)
   if (nlevels(data$outcomes[[1]]) > 2) {
     rlang::abort(
@@ -54,7 +48,7 @@ logistic_regression <- function(
       training = data$predictors,
       labels = data$outcomes,
       lambda = penalty,
-      max_iterations = stop_iter,
+      max_iterations = epochs,
       decision_boundary = decision_boundary,
       tolerance = tolerance,
       optimizer = optimizer,

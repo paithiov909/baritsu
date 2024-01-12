@@ -19,7 +19,7 @@ test_that("naive_bayes fails when data contains NAs", {
   )
 })
 
-test_that("naive_bayes fails or warns when response is invalid", {
+test_that("naive_bayes fails when response is invalid", {
   testdat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = penguins_test)
@@ -30,7 +30,7 @@ test_that("naive_bayes fails or warns when response is invalid", {
         dplyr::mutate(species = as.numeric(species))
     )
   )
-  expect_warning(
+  expect_error(
     naive_bayes(
       species + sex ~ .,
       data = testdat

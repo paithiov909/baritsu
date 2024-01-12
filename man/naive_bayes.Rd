@@ -2,7 +2,7 @@
 % Please edit documentation in R/naive-bayes.R
 \name{naive_bayes}
 \alias{naive_bayes}
-\title{Parametric Naive Bayes Classifier}
+\title{Parametric naive Bayes classifier}
 \usage{
 naive_bayes(
   formula = NULL,

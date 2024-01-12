@@ -1,4 +1,4 @@
-#' Parametric Naive Bayes Classifier
+#' Parametric naive Bayes classifier
 #'
 #' A wrapper around [mlpack::nbc()] that allows passing a formula.
 #'

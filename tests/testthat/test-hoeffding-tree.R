@@ -10,60 +10,60 @@ rec <-
   recipes::step_impute_median(recipes::all_numeric_predictors()) |>
   recipes::step_impute_mode(recipes::all_nominal_predictors())
 
-test_that("decition_trees fails when data contains NAs", {
+test_that("hoeffding_trees fails when data contains NAs", {
   expect_error(
-    decision_trees(
+    hoeffding_trees(
       species ~ .,
       data = penguins
     )
   )
 })
 
-test_that("decision_trees fails when response is invalid", {
+test_that("hoeffding_trees fails when response is invalid", {
   testdat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = penguins_test)
   expect_error(
-    decision_trees(
+    hoeffding_trees(
       species ~ .,
       data = testdat |>
         dplyr::mutate(species = as.numeric(species))
     )
   )
   expect_error(
-    decision_trees(
+    hoeffding_trees(
       species + sex ~ .,
       data = testdat
     )
   )
 })
 
-test_that("decision_trees works for x-y interface", {
+test_that("hoeffding_trees works for x-y interface", {
   dat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = NULL)
-  out <- decision_trees(
+  out <- hoeffding_trees(
     x = dplyr::select(dat, !"species"),
     y = dplyr::select(dat,  "species")
   )
-  expect_s3_class(out, "baritsu_dt")
+  expect_s3_class(out, "baritsu_ht")
 })
 
-test_that("decision_trees works for formula interface", {
+test_that("hoeffding_trees works for formula interface", {
   dat <- rec |>
     recipes::prep() |>
     recipes::bake(new_data = NULL)
-  out <- decision_trees(
+  out <- hoeffding_trees(
     species ~ .,
     data = dat
   )
-  expect_s3_class(out, "baritsu_dt")
+  expect_s3_class(out, "baritsu_ht")
 })
 
-test_that("decision_trees works with tidymodels", {
-  spec <- parsnip::decision_tree(
-    tree_depth = 0,
-    min_n = 5
+test_that("hoeffding_trees works with tidymodels", {
+  spec <- hoeffding_tree(
+    confidence_factor = 0.95,
+    sample_size = 10
   ) |>
     parsnip::set_engine("baritsu") |>
     parsnip::set_mode("classification")
@@ -91,10 +91,11 @@ test_that("decision_trees works with tidymodels", {
   )
 
   wf_fit <- workflows::workflow() |>
-    workflows::add_recipe(rec) |>
     workflows::add_model(spec) |>
+    workflows::add_recipe(rec) |>
     fit(penguins_train)
   expect_s3_class(wf_fit, "workflow")
   out <- predict(wf_fit, penguins_test)
   expect_s3_class(out, "tbl_df")
+  expect_equal(colnames(out), ".pred_class")
 })
