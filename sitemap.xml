@@ -25,6 +25,9 @@
     <loc>https://paithiov909.github.io/baritsu/reference/details_decision_tree_baritsu.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/baritsu/reference/details_hoeffding_tree_baritsu.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/baritsu/reference/details_lars_baritsu.html</loc>
   </url>
   <url>
@@ -44,6 +47,9 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/baritsu/reference/details_svm_linear_baritsu.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/baritsu/reference/hoeffding_trees.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/baritsu/reference/index.html</loc>

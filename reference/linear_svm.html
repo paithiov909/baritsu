@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">baritsu</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,11 +53,11 @@
 <span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  margin <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  penalty <span class="op">=</span> <span class="fl">1e-04</span>,</span>
-<span>  stop_iter <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  epochs <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  no_intercept <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  tolerance <span class="op">=</span> <span class="fl">1e-10</span>,</span>
 <span>  optimizer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lbfgs"</span>, <span class="st">"psgd"</span><span class="op">)</span>,</span>
-<span>  epochs <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>  stop_iter <span class="op">=</span> <span class="fl">50</span>,</span>
 <span>  learn_rate <span class="op">=</span> <span class="fl">0.01</span>,</span>
 <span>  shuffle <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">0</span>,</span>
@@ -84,8 +84,10 @@
 <dd><p>L2-regularization constant.</p></dd>
 
 
-<dt>stop_iter</dt>
-<dd><p>Maximum iterations for optimizer (0 indicates no limit).</p></dd>
+<dt>epochs</dt>
+<dd><p>Maximum iterations for optimizer (0 indicates no limit).
+This argument is passed as <code>max_iterations</code>, not as <code>epochs</code>
+for <code><a href="https://rdrr.io/pkg/mlpack/man/linear_svm.html" class="external-link">mlpack::linear_svm()</a></code>.</p></dd>
 
 
 <dt>no_intercept</dt>
@@ -100,7 +102,7 @@
 <dd><p>Optimizer to use for training ("lbfgs" or "psgd").</p></dd>
 
 
-<dt>epochs</dt>
+<dt>stop_iter</dt>
 <dd><p>Maximum number of full epochs over dataset for parallel SGD.</p></dd>
 
 
@@ -110,7 +112,7 @@ in which data points are visited for parallel SGD.</p></dd>
 
 
 <dt>shuffle</dt>
-<dd><p>Logical; if true, doesn't shuffle the order</p></dd>
+<dd><p>Logical; if true, doesn't shuffle the order.</p></dd>
 
 
 <dt>seed</dt>
