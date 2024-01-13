@@ -143,4 +143,5 @@ register_hoeffding_tree_baritsu <- function() { # nolint
         )
     )
   )
+  parsnip::set_dependency("hoeffding_tree", "baritsu", "baritsu")
 }

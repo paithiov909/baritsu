@@ -1,6 +1,8 @@
+AdaBoost
 Breiman
 Gini
 Hoeffding
+MH
 SGD
 Softmax
 Stagewise

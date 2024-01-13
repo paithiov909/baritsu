@@ -9,6 +9,7 @@ Parsnip engines in baritsu
 \details{
 baritsu has the following parsnip engines:
 \itemize{
+\item \link{details_boost_tree_baritsu}
 \item \link{details_decision_tree_baritsu}
 \item \link{details_hoeffding_tree_baritsu}
 \item \link{details_logistic_reg_baritsu}

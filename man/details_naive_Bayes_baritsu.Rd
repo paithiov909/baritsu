@@ -11,7 +11,7 @@ a parametric Naive Bayes Classifier, used for classification.
 For this engine, there is a single mode: classification
 \subsection{Tuning Parameters}{
 
-This engine has no tuning parameters.
+This model has no tuning parameters.
 }
 }
 \keyword{internal}

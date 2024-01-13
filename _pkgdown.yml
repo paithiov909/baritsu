@@ -4,6 +4,7 @@ template:
 reference:
   - title: Classification
     contents:
+      - adaboost
       - decision_trees
       - hoeffding_trees
       - linear_svm

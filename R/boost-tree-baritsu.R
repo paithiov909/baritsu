@@ -1,7 +1,7 @@
-#' Naive Bayes models via baritsu
+#' AdaBoost via baritsu
 #'
-#' [mlpack::nbc()] is an implementation of
-#' a parametric Naive Bayes Classifier, used for classification.
+#' [mlpack::adaboost()] is an implementation of
+#' the AdaBoost.MH (Adaptive Boosting) algorithm for classification.
 #'
 #' @details
 #' For this engine, there is a single mode: classification
@@ -10,25 +10,25 @@
 #'
 #' This model has no tuning parameters.
 #'
-#' @name details_naive_Bayes_baritsu
+#' @name details_boost_tree_baritsu
 #' @keywords internal
 NULL
 
-register_naive_Bayes_baritsu <- function() { # nolint
-  parsnip::set_model_engine("naive_Bayes", "classification", "baritsu")
+register_boost_tree_baritsu <- function() {
+  parsnip::set_model_engine("boost_tree", "classification", "baritsu")
   parsnip::set_fit(
-    model = "naive_Bayes",
+    model = "boost_tree",
     eng = "baritsu",
     mode = "classification",
     value = list(
       interface = "formula",
       protect = c("formula", "data", "x", "y"),
-      func = c(pkg = "baritsu", fun = "naive_bayes"),
+      func = c(pkg = "baritsu", fun = "adaboost"),
       defaults = list()
     )
   )
   parsnip::set_encoding(
-    model = "naive_Bayes",
+    model = "boost_tree",
     eng = "baritsu",
     mode = "classification",
     options = list(
@@ -39,7 +39,7 @@ register_naive_Bayes_baritsu <- function() { # nolint
     )
   )
   parsnip::set_pred(
-    model = "naive_Bayes",
+    model = "boost_tree",
     eng = "baritsu",
     mode = "classification",
     type = "class",
@@ -56,7 +56,7 @@ register_naive_Bayes_baritsu <- function() { # nolint
     )
   )
   parsnip::set_pred(
-    model = "naive_Bayes",
+    model = "boost_tree",
     eng = "baritsu",
     mode = "classification",
     type = "prob",
@@ -72,5 +72,5 @@ register_naive_Bayes_baritsu <- function() { # nolint
         )
     )
   )
-  parsnip::set_dependency("naive_Bayes", "baritsu", "baritsu")
+  parsnip::set_dependency("boost_tree", "baritsu", "baritsu")
 }

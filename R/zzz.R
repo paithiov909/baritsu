@@ -1,5 +1,6 @@
 #' @noRd
 .onLoad <- function(libname, pkgname) {
+  register_boost_tree_baritsu()
   register_decision_tree_baritsu()
   register_hoeffding_tree_baritsu()
   register_lars_baritsu()

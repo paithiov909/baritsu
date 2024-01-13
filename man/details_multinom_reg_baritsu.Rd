@@ -17,12 +17,5 @@ This model has 1 tuning parameter:
 \item \code{penalty}: Amount of Regularization (type: double)
 }
 }
-
-\subsection{Preprocessing requirements}{
-
-Predictors should have the same scale.
-One way to achieve this is to center and scale each
-so that each predictor has mean zero and a variance of one.
-}
 }
 \keyword{internal}

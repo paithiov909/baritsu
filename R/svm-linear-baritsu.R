@@ -12,12 +12,6 @@
 #'
 #' - `margin`: Insensitivity Margin (type: double)
 #'
-#' ## Preprocessing requirements
-#'
-#' Predictors should be centered and scaled.
-#' One way to achieve this is to center and scale each
-#' so that each predictor has mean zero and a variance of one.
-#'
 #' @name details_svm_linear_baritsu
 #' @keywords internal
 NULL

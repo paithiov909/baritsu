@@ -20,12 +20,6 @@ perceptron <- function(
   y = NULL
 ) {
   data <- mold(formula, data, x, y)
-  if (ncol(data$outcomes) > 1) {
-    # need to make sure outcomes are not multiple.
-    rlang::abort(
-      "outcomes consist of more than one column. verify LHS of formula."
-    )
-  }
   check_outcomes(data$outcomes)
   check_predictors(data$predictors)
 

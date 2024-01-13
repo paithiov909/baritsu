@@ -16,12 +16,5 @@ This engine has 1 tuning parameter:
 \item \code{margin}: Insensitivity Margin (type: double)
 }
 }
-
-\subsection{Preprocessing requirements}{
-
-Predictors should be centered and scaled.
-One way to achieve this is to center and scale each
-so that each predictor has mean zero and a variance of one.
-}
 }
 \keyword{internal}
