@@ -16,10 +16,16 @@
     <loc>https://paithiov909.github.io/baritsu/index.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/baritsu/reference/adaboost.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/baritsu/reference/baritsu-package.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/baritsu/reference/decision_trees.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/baritsu/reference/details_boost_tree_baritsu.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/baritsu/reference/details_decision_tree_baritsu.html</loc>
