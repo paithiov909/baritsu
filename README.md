@@ -13,7 +13,7 @@ badge](https://paithiov909.r-universe.dev/badges/baritsu)](https://paithiov909.r
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-The main goal of baritsu is to implement wrappers around
+The main goal of baritsu is to implement wrappers for
 [mlpack](https://www.mlpack.org/doc/stable/r_documentation.html) that
 allows formula as their argument. Also, baritsu provides
 [parsnip](https://parsnip.tidymodels.org/) engines of those wrappers, so
@@ -26,8 +26,7 @@ You can install the development version of baritsu from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("paithiov909/baritsu")
+remotes::install_github("paithiov909/baritsu")
 ```
 
 ## Example

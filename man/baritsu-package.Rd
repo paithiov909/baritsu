@@ -4,9 +4,9 @@
 \name{baritsu-package}
 \alias{baritsu}
 \alias{baritsu-package}
-\title{baritsu: Wrappers Around 'mlpack'}
+\title{baritsu: Wrappers for 'mlpack'}
 \description{
-A collection of wrappers around the 'mlpack' package that allows passing formula as their argument.
+A collection of wrappers for the 'mlpack' package that allows passing formula as their argument.
 }
 \seealso{
 Useful links:
