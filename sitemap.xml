@@ -1,93 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/404.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/index.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/adaboost.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/baritsu-package.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/decision_trees.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_boost_tree_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_decision_tree_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_hoeffding_tree_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_lars_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_logistic_reg_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_mlp_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_multinom_reg_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_naive_Bayes_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_rand_forest_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/details_svm_linear_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/hoeffding_trees.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/linear_regression.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/linear_regression_bayesian.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/linear_svm.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/logistic_regression.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/naive_bayes.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/parsnip_engines_baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/perceptron.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/random_forest.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/baritsu/reference/softmax_regression.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://paithiov909.github.io/baritsu/404.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/LICENSE-text.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/LICENSE.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/authors.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/index.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/adaboost.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/baritsu-package.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/decision_trees.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_boost_tree_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_decision_tree_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_hoeffding_tree_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_lars_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_logistic_reg_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_mlp_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_multinom_reg_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_naive_Bayes_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_rand_forest_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/details_svm_linear_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/hoeffding_trees.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/index.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/linear_regression.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/linear_regression_bayesian.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/linear_svm.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/logistic_regression.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/naive_bayes.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/parsnip_engines_baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/perceptron.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/predict.baritsu.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/random_forest.html</loc></url>
+<url><loc>https://paithiov909.github.io/baritsu/reference/softmax_regression.html</loc></url>
 </urlset>
+
