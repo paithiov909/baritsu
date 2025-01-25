@@ -10,4 +10,3 @@
 ^cran-comments\.md$
 ^codecov\.yml$
 ^renovate\.json$
-^_pkgdown\.yml$
