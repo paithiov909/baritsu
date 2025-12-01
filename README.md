@@ -5,12 +5,10 @@
 
 <!-- badges: start -->
 
-[![baritsu status
-badge](https://paithiov909.r-universe.dev/badges/baritsu)](https://paithiov909.r-universe.dev/baritsu)
-[![R-CMD-check](https://github.com/paithiov909/baritsu/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/paithiov909/baritsu/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/gh/paithiov909/baritsu/branch/main/graph/badge.svg?token=LWH2AFDEMY)](https://app.codecov.io/gh/paithiov909/baritsu)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/paithiov909/baritsu/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/paithiov909/baritsu/actions/workflows/R-CMD-check.yaml)
+[![codecov](https://codecov.io/gh/paithiov909/baritsu/branch/main/graph/badge.svg?token=LWH2AFDEMY)](https://app.codecov.io/gh/paithiov909/baritsu)
 <!-- badges: end -->
 
 The main goal of baritsu is to implement wrappers for
